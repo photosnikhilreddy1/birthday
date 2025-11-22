@@ -9,12 +9,12 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-x:hidden; }
 
-/* Floating heart */
+/* Floating hearts */
 .emoji {
   position: fixed;
   font-size: 30px;
   opacity: 0.7;
-  animation: float 20s linear infinite;
+  animation: float 25s linear infinite;
   pointer-events: none;
 }
 @keyframes float {
@@ -24,7 +24,7 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
 }
 
 /* Container */
-.container { max-width:900px; margin:0 auto; padding:50px 20px; display:flex; flex-direction:column; gap:40px; }
+.container { max-width:900px; margin:0 auto; padding:50px 20px; display:flex; flex-direction:column; gap:30px; }
 
 /* Event Block */
 .event-block {
@@ -49,11 +49,11 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
   display: flex;
   align-items: center;
   gap: 20px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 .event-link {
   font-family: 'Playfair Display', serif;
-  font-size: 32px;
+  font-size: 28px;
   color: #ff577f;
   text-decoration: underline;
   font-weight: 700;
@@ -69,11 +69,7 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
 /* Text container */
 .text-container { flex:1; min-width:0; }
 .poetry { font-size:18px; line-height:1.4; color:#eee; }
-.poetry p { margin-bottom:6px; min-height:22px; }
-
-/* Image container */
-.image-container { flex-shrink:0; width:200px; }
-.image-container img { width:100%; border-radius:15px; }
+.poetry p { margin-bottom:4px; min-height:22px; }
 
 /* Love Message */
 .love-message {
@@ -102,15 +98,15 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
 </head>
 <body>
 
-<!-- Floating heart -->
+<!-- Floating hearts -->
 <script>
-const emojiCount = 1; 
+const emojiCount = 3; 
 const symbols = ['❤️'];
 for(let i=0;i<emojiCount;i++){
   let emoji = document.createElement('div');
   emoji.className='emoji';
   emoji.style.left = Math.random()*100 + 'vw';
-  emoji.style.animationDuration = (20 + Math.random()*10)+'s';
+  emoji.style.animationDuration = (25 + Math.random()*15)+'s';
   emoji.innerHTML = symbols[Math.floor(Math.random()*symbols.length)];
   document.body.appendChild(emoji);
 }
@@ -120,7 +116,7 @@ for(let i=0;i<emojiCount;i++){
 
 <!-- Event 1 -->
 <div class="event-block">
-<h2><a href="https://maps.app.goo.gl/y1ua36iZJ3gJsMLZ8" target="_blank" class="event-link">First Date - Windmill Whispers </a> <span class="event-date">20 June</span></h2>
+<h2><a href="https://maps.app.goo.gl/y1ua36iZJ3gJsMLZ8" target="_blank" class="event-link">First Date - Windmill Whispers</a> <span class="event-date">20 June 2025</span></h2>
 <div class="text-container">
 <div class="poetry">
 <p>A windmill turning slow.</p>
@@ -128,45 +124,32 @@ for(let i=0;i<emojiCount;i++){
 <p>Your eyes speaking quietly to mine.</p>
 <p>A comfort I didn’t expect.</p>
 <p>A spark I didn’t understand yet.</p>
-
-<p>The bike ride after—</p>
-<p>cool air, soft silence, shared space.</p>
+<p>The bike ride after—cool air, soft silence, shared space.</p>
 <p>Your hand on my shoulder—warm, gentle, grounding.</p>
 <p>A touch that stayed in my mind long after.</p>
-
-<p>And somewhere inside,</p>
-<p>a small wish began—</p>
-<p>a simple side hug, someday.</p>
-
-<p>A tiny beginning.</p>
-<p>A quiet start.</p>
-<p>But it was the start of us.</p>
+<p>And somewhere inside, a small wish began—</p>
+<p>A simple side hug, someday.</p>
+<p>A tiny beginning. A quiet start. But it was the start of us.</p>
 </div>
-</div>
-<div class="image-container">
-<img src="windmill.jpeg" alt="WindMill">
 </div>
 </div>
 
 <!-- Event 2 -->
 <div class="event-block">
-<h2><a href="https://maps.app.goo.gl/DetrGbQWcvJKMtJK9" target="_blank" class="event-link">First Hug - Felt like home</a> <span class="event-date">26 June</span></h2>
+<h2><a href="https://maps.app.goo.gl/DetrGbQWcvJKMtJK9" target="_blank" class="event-link">First Hug - Felt like Home</a> <span class="event-date">26 June 2025</span></h2>
 <div class="text-container">
 <div class="poetry">
 <p>The hotel room felt warm and quiet, a space filled with nerves, excitement, and a gentle pull toward you.</p>
-<p>Your first hug—like <b>butterflies waking all at once</b>, their soft wings fluttering through my chest, making my breath feel warm and weightless.</p>
+<p>Your first hug—like butterflies waking all at once, their soft wings fluttering through my chest, making my breath feel warm and weightless.</p>
 <p>Then came our first closeness—nervous, tender, slow… two unsure hearts stepping into something new.</p>
-<p>That night felt like a shift— a quiet spark, a silent confession, a feeling that stayed long after.</p>
+<p>That night felt like a shift—a quiet spark, a silent confession, a feeling that stayed long after.</p>
 </div>
-</div>
-<div class="image-container">
-<img src="hotel.jpeg" alt="Super Townhouse">
 </div>
 </div>
 
 <!-- Event 3 -->
 <div class="event-block">
-<h2><a href="https://maps.app.goo.gl/8QcMrJNAsCu5vheMA" target="_blank" class="event-link">Bowled Over</a> <span class="event-date"></span></h2>
+<h2><a href="https://maps.app.goo.gl/8QcMrJNAsCu5vheMA" target="_blank" class="event-link">Bowled Over - Cricket Field</a> <span class="event-date">July 2025</span></h2>
 <div class="text-container">
 <div class="poetry">
 <p>Having you on the cricket field felt unexpectedly tender—your presence turning the whole place warm.</p>
@@ -174,14 +157,11 @@ for(let i=0;i<emojiCount;i++){
 <p>And when I caught you watching—that soft, adoring glance—you thought I didn’t notice—it felt like the sweetest victory.</p>
 </div>
 </div>
-<div class="image-container">
-<img src="cricket.jpeg" alt="Cricket Field">
-</div>
 </div>
 
 <!-- Event 4 -->
 <div class="event-block">
-<h2><a href="#" target="_blank" class="event-link">Bier & Burning Desire</a> <span class="event-date">15 July</span></h2>
+<h2><a href="#" target="_blank" class="event-link">Bier & Burning Desire</a> <span class="event-date">15 July 2025</span></h2>
 <div class="text-container">
 <div class="poetry">
 <p>Restobar lights, cold beer, your warmth closer than ever.</p>
@@ -190,14 +170,11 @@ for(let i=0;i<emojiCount;i++){
 <p>Even the small bite that drew blood couldn’t stop the fire between us.</p>
 </div>
 </div>
-<div class="image-container">
-<img src="biere.jpeg" alt="153 Biere Street">
-</div>
 </div>
 
 <!-- Event 5 -->
 <div class="event-block">
-<h2><a href="#" target="_blank" class="event-link">Secret Lust Whispers</a> <span class="event-date">6 Aug</span></h2>
+<h2><a href="#" target="_blank" class="event-link">Secret Lust Whispers - Akoya</a> <span class="event-date">06 August 2025</span></h2>
 <div class="text-container">
 <div class="poetry">
 <p>That day felt charged from the moment we met—wine warming us, desire flickering in every glance.</p>
@@ -206,13 +183,76 @@ for(let i=0;i<emojiCount;i++){
 <p>And when the storm settled, biryani and tender coconut pudding felt calm and sweet.</p>
 </div>
 </div>
-<div class="image-container">
-<img src="akoya.jpeg" alt="Akoya">
+</div>
+
+<!-- Remaining events follow same pattern -->
+<!-- Event 6 -->
+<div class="event-block">
+<h2><a href="#" target="_blank" class="event-link">Happy Stays</a> <span class="event-date">19 August 2025</span></h2>
+<div class="text-container">
+<div class="poetry">
+<p>Mad, wild, unforgettable moments that left us breathless.</p>
+<p>Biryani mix-up, our little hustle to get it back—messy, funny, perfectly us.</p>
+</div>
 </div>
 </div>
 
-<!-- Continue the same pattern for remaining events (Happy Stays, Phoenix, Zipshree, Jungle Romance, Marathahalli hotel, Akoya November) -->
-<!-- Replace image src and links accordingly -->
+<!-- Event 7 -->
+<div class="event-block">
+<h2><a href="#" target="_blank" class="event-link">Phoenix</a> <span class="event-date">24 August 2025</span></h2>
+<div class="text-container">
+<div class="poetry">
+<p>Parking lot kisses—hot, stolen, the kind that spark right through the skin, until security’s flashlight found us and we broke apart laughing, breathless, guilty, wanting more.</p>
+<p>The movie date carried our longing further, fingers tracing secrets only we could feel.</p>
+<p>Triple Schezwan was its own kind of heat—spicy, messy, addictive, just like us that day.</p>
+</div>
+</div>
+</div>
+
+<!-- Event 8 -->
+<div class="event-block">
+<h2><a href="#" target="_blank" class="event-link">Zipshree</a> <span class="event-date">29 August 2025</span></h2>
+<div class="text-container">
+<div class="poetry">
+<p>Smirnoff warming our voices, hearts running too fast for their own good.</p>
+<p>A small fight sparked—sharp words, sharper silence—but underneath it all was love burning too intensely to hide.</p>
+<p>The way we held each other afterward—quiet, trembling, overflowing—said more than apologies ever could.</p>
+</div>
+</div>
+</div>
+
+<!-- Event 9 -->
+<div class="event-block">
+<h2><a href="#" target="_blank" class="event-link">Jungle Romance</a> <span class="event-date">September 2025</span></h2>
+<div class="text-container">
+<div class="poetry">
+<p>Our kisses trembling with fear and desire, every touch a forbidden spark as if someone might see, the jungle stop turning us wild in the dark, intimacy rising, suspense thick in the air.</p>
+</div>
+</div>
+</div>
+
+<!-- Event 10 -->
+<div class="event-block">
+<h2><a href="#" target="_blank" class="event-link">Marathahalli Hotel</a> <span class="event-date">18 September 2025</span></h2>
+<div class="text-container">
+<div class="poetry">
+<p>Mad intimate sessions that shook the night, scars and bruises tracing the story on your skin, a physical rush so new, so deep, something I never knew my body could ever feel.</p>
+</div>
+</div>
+</div>
+
+<!-- Event 11 -->
+<div class="event-block">
+<h2><a href="#" target="_blank" class="event-link">Akoya November</a> <span class="event-date">06 November 2025</span></h2>
+<div class="text-container">
+<div class="poetry">
+<p>Sex after a long month apart, cuddles melting into warm, naked hugs, bodies remembering each other in silence, everything soft, slow, and impossibly good.</p>
+<p>Food with you is its own comfort — biryani, pizza, cold coffee. Wine and vodka nights — everything tastes better with you.</p>
+<p>Manifesting more intimacy, more adventure, more love, more raw moments, a lifetime friend, a lifetime fire, a lifetime “us.”</p>
+<p>Manifesting Goa dates for years and decades, until these breaths soften… and fade… yet still choose you.</p>
+</div>
+</div>
+</div>
 
 <!-- Love Message -->
 <div class="love-message">
@@ -229,24 +269,14 @@ again, again, and always.</p>
 <script>
 // Sequential typing function
 function typeParagraphSequential(lines, delay=40, lineDelay=400, index=0, callback=null){
-  if(index >= lines.length){
-    if(callback) callback();
-    return;
-  }
+  if(index >= lines.length){ if(callback) callback(); return; }
   const p = lines[index];
   const text = p.textContent;
   p.textContent = '';
   let i = 0;
   function typing(){
-    if(i < text.length){
-      p.textContent += text[i];
-      i++;
-      setTimeout(typing, delay);
-    } else {
-      setTimeout(() => {
-        typeParagraphSequential(lines, delay, lineDelay, index+1, callback);
-      }, lineDelay);
-    }
+    if(i < text.length){ p.textContent += text[i]; i++; setTimeout(typing, delay); } 
+    else { setTimeout(()=>{ typeParagraphSequential(lines, delay, lineDelay, index+1, callback); }, lineDelay); }
   }
   typing();
 }
