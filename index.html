@@ -6,116 +6,232 @@
 <title>Our Love Story</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-x:hidden; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-x:hidden; }
 
-  /* Floating hearts */
-  .heart {
-    position: fixed;
-    font-size: 18px;
-    color: #e63946;
-    opacity: 0.8;
-    animation: float 10s linear infinite;
-    pointer-events: none;
-  }
-  @keyframes float {
-    0% { transform: translateY(100vh) scale(1) rotate(0deg); opacity:0.5; }
-    50% { opacity:1; }
-    100% { transform: translateY(-100vh) scale(1.3) rotate(360deg); opacity:0.5; }
-  }
+/* Floating hearts */
+.heart {
+  position: fixed;
+  font-size: 18px;
+  color: #e63946;
+  opacity: 0.8;
+  animation: float 10s linear infinite;
+  pointer-events: none;
+}
+@keyframes float {
+  0% { transform: translateY(100vh) scale(1) rotate(0deg); opacity:0.5; }
+  50% { opacity:1; }
+  100% { transform: translateY(-100vh) scale(1.3) rotate(360deg); opacity:0.5; }
+}
 
-  .container { max-width:900px; margin:0 auto; padding:50px 20px; display:flex; flex-direction:column; gap:50px; }
+.container { max-width:900px; margin:0 auto; padding:50px 20px; display:flex; flex-direction:column; gap:50px; }
 
-  /* Event Block */
-  .event-block {
-    border-radius: 15px;
-    padding: 30px 25px;
-    overflow: hidden;
-    opacity:0;
-    transform: translateY(50px) scale(0.95);
-    transition: all 0.8s ease, background 0.5s;
-    border-left: 5px solid #e63946;
-  }
-  .event-block:nth-child(even) { background: rgba(230,57,70,0.05); }
-  .event-block:nth-child(odd) { background: #1a1a1a; }
-  .event-block.visible { opacity:1; transform: translateY(0) scale(1); }
+/* Event Block */
+.event-block {
+  border-radius: 15px;
+  padding: 30px 25px;
+  overflow: hidden;
+  opacity:0;
+  transform: translateY(50px) scale(0.95);
+  transition: all 0.8s ease;
+  border-left: 5px solid #e63946;
+}
+.event-block:nth-child(even) { background: rgba(230,57,70,0.05); }
+.event-block:nth-child(odd) { background: #1a1a1a; }
+.event-block.visible { opacity:1; transform: translateY(0) scale(1); }
 
-  /* Event Header */
-  .event-block h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 26px;
-    color: #ff577f;
-    display:flex;
-    align-items:center;
-    gap:15px;
-    margin-bottom:20px;
-  }
-  .event-block h2 img { width:50px; height:50px; object-fit:cover; border-radius:50%; }
-  .event-block h2 a { font-size:14px; color:#fff; text-decoration:none; }
+/* Event Header */
+.event-block h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  color: #ff577f;
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-bottom:20px;
+}
+.event-block h2 img { width:50px; height:50px; object-fit:cover; border-radius:50%; }
+.event-block h2 a { font-size:14px; color:#fff; text-decoration:none; }
 
-  /* Poetry Text */
-  .poetry { font-size:18px; line-height:1.7; color:#eee; }
-  .poetry p { margin-bottom:15px; opacity:0; transform: translateY(20px); transition: all 0.8s ease; }
-  .poetry p.visible { opacity:1; transform: translateY(0); }
-  .poetry b { color:#ff577f; }
+/* Poetry Text */
+.poetry { font-size:18px; line-height:1.7; color:#eee; }
+.poetry p { margin-bottom:15px; opacity:0; display:inline-block; white-space:pre-wrap; }
+.poetry b { color:#ff577f; }
 
-  /* Love Message */
-  .love-message {
-    background:#e63946;
-    color:#fff;
-    border-radius:15px;
-    padding:50px 30px;
-    text-align:center;
-    font-family: 'Playfair Display', serif;
-    font-size:22px;
-    line-height:1.8;
-    box-shadow:0 10px 25px rgba(255,0,70,0.4);
-    position:relative;
-    overflow:hidden;
-  }
-  .love-message::before {
-    content:'❤️❤️❤️';
-    position:absolute;
-    font-size:40px;
-    top:-20px;
-    left:50%;
-    transform:translateX(-50%);
-    opacity:0.2;
-  }
+/* Love Message */
+.love-message {
+  background:#e63946;
+  color:#fff;
+  border-radius:15px;
+  padding:50px 30px;
+  text-align:center;
+  font-family: 'Playfair Display', serif;
+  font-size:22px;
+  line-height:1.8;
+  box-shadow:0 10px 25px rgba(255,0,70,0.4);
+  position:relative;
+  overflow:hidden;
+}
+.love-message::before {
+  content:'❤️❤️❤️';
+  position:absolute;
+  font-size:40px;
+  top:-20px;
+  left:50%;
+  transform:translateX(-50%);
+  opacity:0.2;
+}
+
+/* Handwriting animation */
+@keyframes writeLine {
+  from { width:0; }
+  to { width:100%; }
+}
+.write-text { 
+  display:inline-block;
+  overflow:hidden;
+  border-right:2px solid #ff577f;
+  white-space:nowrap;
+  animation: writeLine 1s forwards;
+}
 </style>
 </head>
 <body>
 
 <!-- Floating hearts -->
 <script>
-  const heartCount = 25;
-  for(let i=0;i<heartCount;i++){
-    let heart = document.createElement('div');
-    heart.className='heart';
-    heart.style.left = Math.random()*100 + 'vw';
-    heart.style.animationDuration = (5+Math.random()*10)+'s';
-    heart.innerHTML = '❤️';
-    document.body.appendChild(heart);
-  }
+const heartCount = 25;
+for(let i=0;i<heartCount;i++){
+  let heart = document.createElement('div');
+  heart.className='heart';
+  heart.style.left = Math.random()*100 + 'vw';
+  heart.style.animationDuration = (5+Math.random()*10)+'s';
+  heart.innerHTML = '❤️';
+  document.body.appendChild(heart);
+}
 </script>
 
 <div class="container">
 
-  <!-- Example Event Block -->
+  <!-- WindMill -->
   <div class="event-block">
     <h2>WindMill: 20 June 2025 <a href="#"><img src="windmill.jpg" alt="Windmill"></a></h2>
     <div class="poetry">
-      <p>A windmill turning slow.<br>Our first beer.<br>Your eyes speaking quietly to mine.</p>
-      <p>The bike ride after—cool air, soft silence, shared space.</p>
-      <p>Your hand on my shoulder—warm, gentle, grounding.<br>A touch that stayed in my mind long after.</p>
-      <p>And somewhere inside, a small wish began—<br>a simple side hug, someday.</p>
-      <p>A tiny beginning. A quiet start. But it was the start of us.</p>
+      <p class="write-text">A windmill turning slow. Our first beer. Your eyes speaking quietly to mine.</p>
+      <p class="write-text">The bike ride after—cool air, soft silence, shared space.</p>
+      <p class="write-text">Your hand on my shoulder—warm, gentle, grounding. A touch that stayed in my mind long after.</p>
+      <p class="write-text">And somewhere inside, a small wish began—a simple side hug, someday.</p>
+      <p class="write-text">A tiny beginning. A quiet start. But it was the start of us.</p>
     </div>
   </div>
 
-  <!-- Repeat this block structure for all events -->
-  <!-- Super Townhouse, Cricket Field, 153 Biere Street, Akoya, Happy Stays, Phoenix, Zipshree, Jungle, Marathahalli, Akoya Nov, Food & Manifesting -->
-  <!-- Each with alternating background and same poetry format -->
+  <!-- Super Townhouse -->
+  <div class="event-block">
+    <h2>Super Townhouse Oak AECS: 26 June <a href="#"><img src="hotel.jpg" alt="Hotel"></a></h2>
+    <div class="poetry">
+      <p class="write-text">The hotel room felt warm and quiet, a space filled with nerves, excitement, and a gentle pull toward you.</p>
+      <p class="write-text">Your first hug—like <b>butterflies waking all at once</b>, their soft wings fluttering through my chest, making my breath feel warm and weightless.</p>
+      <p class="write-text">Then came our first closeness—nervous, tender, slow… two unsure hearts stepping into something new.</p>
+      <p class="write-text">That night felt like a shift— a quiet spark, a silent confession, a feeling that stayed long after.</p>
+    </div>
+  </div>
+
+  <!-- Cricket Field -->
+  <div class="event-block">
+    <h2>Cricket Field: 3 July <a href="#"><img src="cricket.jpg" alt="Cricket Field"></a></h2>
+    <div class="poetry">
+      <p class="write-text">Having you on the cricket field felt tender—your presence turning the whole place warm.</p>
+      <p class="write-text">I played with a little extra fire, hoping you’d see me, notice me, maybe even feel a spark.</p>
+      <p class="write-text">And when I caught you watching—that soft, adoring glance—you touched my heart more than the game ever could.</p>
+    </div>
+  </div>
+
+  <!-- 153 Biere Street -->
+  <div class="event-block">
+    <h2>153 Biere Street: 15 July <a href="#"><img src="restobar.jpg" alt="Restobar"></a></h2>
+    <div class="poetry">
+      <p class="write-text">Restobar lights, cold beer, your warmth closer than ever.</p>
+      <p class="write-text">Parking lot pressed us together, hands exploring, lips devouring. Cuddles heavy, breaths tangled.</p>
+      <p class="write-text">Even the small bite that drew blood couldn’t stop the fire between us.</p>
+      <p class="write-text">Movie date carried our longing further, fingers tracing secrets only we could feel.</p>
+    </div>
+  </div>
+
+  <!-- Akoya August -->
+  <div class="event-block">
+    <h2>Akoya: 6 August <a href="#"><img src="akoya.jpg" alt="Akoya"></a></h2>
+    <div class="poetry">
+      <p class="write-text">Wine warming us, desire flickering in every glance, every small touch pulling us closer.</p>
+      <p class="write-text">Everything clicked instantly—our bodies answering each other with a hungry honesty.</p>
+      <p class="write-text">Bold hands, daring kisses, heat that drowned every thought except you.</p>
+      <p class="write-text">Storm settled, biryani and tender coconut pudding felt calm and sweet—a soft ending to a burning day.</p>
+    </div>
+  </div>
+
+  <!-- Happy Stays -->
+  <div class="event-block">
+    <h2>Happy Stays: 19 August <a href="#"><img src="happystays.jpg" alt="Happy Stays"></a></h2>
+    <div class="poetry">
+      <p class="write-text">Mad, wild, unforgettable sex that left us breathless.</p>
+      <p class="write-text">Biryani mix-up, our little hustle to get it back—messy, funny, perfectly us.</p>
+    </div>
+  </div>
+
+  <!-- Phoenix -->
+  <div class="event-block">
+    <h2>Phoenix: 24 August <a href="#"><img src="phoenix.jpg" alt="Phoenix"></a></h2>
+    <div class="poetry">
+      <p class="write-text">Parking lot kisses—hot, stolen, until security’s flashlight found us, breaking apart laughing, breathless, guilty, wanting more.</p>
+      <p class="write-text">Movie date carried our longing further, fingers tracing secrets only we could feel.</p>
+      <p class="write-text">Triple Schezwan—spicy, messy, addictive, just like us.</p>
+      <p class="write-text">Window-shopping felt intimate—your hand brushing mine, desire hiding in every glance.</p>
+    </div>
+  </div>
+
+  <!-- Zipshree -->
+  <div class="event-block">
+    <h2>Zipshree: 29 August <a href="#"><img src="zipshree.jpg" alt="Zipshree"></a></h2>
+    <div class="poetry">
+      <p class="write-text">Smirnoff warming our voices, hearts running too fast for their own good.</p>
+      <p class="write-text">Small fight sparked—sharp words, sharper silence—love burning too intensely to hide.</p>
+      <p class="write-text">Your bruised face breaks me a little—I’m sorry for every moment that hurt you.</p>
+      <p class="write-text">In the middle of the storm, holding each other afterward—quiet, trembling, overflowing—said more than apologies could.</p>
+    </div>
+  </div>
+
+  <!-- Jungle Romance -->
+  <div class="event-block">
+    <h2>Jungle Romance: 2 September <a href="#"><img src="jungle.jpg" alt="Jungle"></a></h2>
+    <div class="poetry">
+      <p class="write-text">Kisses trembling with fear and desire, every touch a forbidden spark, the jungle turning us wild in the dark, suspense thick in the air, even mosquitos pausing like witnesses.</p>
+    </div>
+  </div>
+
+  <!-- Marathahalli Hotel -->
+  <div class="event-block">
+    <h2>Marathahalli Hotel: 18 September <a href="#"><img src="hotel2.jpg" alt="Marathahalli"></a></h2>
+    <div class="poetry">
+      <p class="write-text">Mad mad intimate sessions that shook the night, scars and bruises tracing the story on your skin, a physical rush so new, so deep, something I never knew my body could feel.</p>
+    </div>
+  </div>
+
+  <!-- Akoya November -->
+  <div class="event-block">
+    <h2>Akoya: 6 November <a href="#"><img src="akoya2.jpg" alt="Akoya"></a></h2>
+    <div class="poetry">
+      <p class="write-text">Sex after a long, aching month apart, cuddles melting into warm, naked hugs, bodies remembering each other in silence, everything soft, slow, and impossibly good.</p>
+    </div>
+  </div>
+
+  <!-- Food & Manifesting -->
+  <div class="event-block">
+    <h2>Food & Love <a href="#"><img src="food.jpg" alt="Food"></a></h2>
+    <div class="poetry">
+      <p class="write-text">Food with you is its own comfort — biryani, pizza, cold coffee, wine and vodka nights — everything tastes better with you.</p>
+      <p class="write-text">Manifesting more intimacy, more adventure, more love, more raw moments, a lifetime friend, a lifetime fire, a lifetime “us.”</p>
+      <p class="write-text">Manifesting Goa dates for years and decades, until these breaths soften… and fade… yet still choose you.</p>
+    </div>
+  </div>
 
   <!-- Love Message -->
   <div class="love-message">
@@ -130,17 +246,16 @@
 </div>
 
 <script>
-  // Event block animation
   const blocks = document.querySelectorAll('.event-block');
   window.addEventListener('scroll', () => {
     const trigger = window.innerHeight * 0.85;
     blocks.forEach(block => {
       const top = block.getBoundingClientRect().top;
-      if(top < trigger) {
+      if(top < trigger && !block.classList.contains('visible')) {
         block.classList.add('visible');
         const lines = block.querySelectorAll('.poetry p');
         lines.forEach((line,i) => {
-          setTimeout(() => { line.classList.add('visible'); }, i*250);
+          setTimeout(() => { line.classList.add('visible'); }, i*500);
         });
       }
     });
