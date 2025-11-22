@@ -28,18 +28,27 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
 .event-block {
   border-radius: 15px;
   padding: 40px 30px;
-  min-height: 90vh;
+  min-height: auto;
   display:flex;
   flex-direction:column;
   justify-content:center;
   opacity:0;
-  transform: translateY(50px) scale(0.95);
+  transform: scale(0.8) translateY(50px);
   transition: all 0.8s ease;
   position: relative;
 }
 .event-block:nth-child(odd) { background:#1a1a1a; }
 .event-block:nth-child(even) { background:#222; }
-.event-block.visible { opacity:1; transform: translateY(0) scale(1); }
+.event-block.visible {
+  opacity:1;
+  transform: scale(1) translateY(0);
+  animation: splash 0.6s ease-out;
+}
+@keyframes splash {
+  0% { transform: scale(0.8) translateY(50px); opacity:0; }
+  50% { transform: scale(1.1) translateY(-10px); opacity:1; }
+  100% { transform: scale(1) translateY(0); opacity:1; }
+}
 
 /* Scroll indicator */
 .scroll-indicator {
@@ -105,7 +114,7 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
 
 <div class="container">
 
-<!-- Example Event Block -->
+<!-- WindMill -->
 <div class="event-block">
 <h2>WindMill: 20 June 2025 <a href="#"><img src="windmill.jpg" alt="Windmill"></a></h2>
 <div class="poetry">
@@ -130,7 +139,7 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
 <div class="scroll-indicator">⬇️</div>
 </div>
 
-<!-- Add all remaining events similarly -->
+<!-- Add remaining events similarly... -->
 
 <!-- Love Message -->
 <div class="love-message">
@@ -145,12 +154,9 @@ again, again, and always.</p>
 </div>
 
 <script>
-// Typing function (line by line, letter by letter)
-function typeParagraphSequential(lines, delay=40, lineDelay=400, index=0, callback=null){
-  if(index >= lines.length){
-    if(callback) callback();
-    return;
-  }
+// Sequential typing function (letter-by-letter)
+function typeParagraphSequential(lines, delay=40, lineDelay=400, index=0){
+  if(index >= lines.length) return;
   const p = lines[index];
   const text = p.textContent;
   p.textContent = '';
@@ -162,28 +168,27 @@ function typeParagraphSequential(lines, delay=40, lineDelay=400, index=0, callba
       i++;
       setTimeout(typing, delay);
     } else {
-      setTimeout(()=>{
-        typeParagraphSequential(lines, delay, lineDelay, index+1, callback);
-      }, lineDelay);
+      setTimeout(()=> typeParagraphSequential(lines, delay, lineDelay, index+1), lineDelay);
     }
   }
   typing();
 }
 
-// Scroll logic: one block at a time
+// Scroll: zoom-in splash animation + typing
 const blocks = Array.from(document.querySelectorAll('.event-block'));
-let currentBlock=0;
+const typedBlocks = new Set();
 
 function handleScroll(){
-  if(currentBlock>=blocks.length) return;
-  const block = blocks[currentBlock];
-  const top = block.getBoundingClientRect().top;
-  const trigger = window.innerHeight*0.85;
-  if(top<trigger && !block.classList.contains('visible')){
-    block.classList.add('visible');
-    const lines = Array.from(block.querySelectorAll('.poetry p'));
-    typeParagraphSequential(lines, 40, 400, 0, ()=>{ currentBlock++; });
-  }
+  blocks.forEach(block=>{
+    const top = block.getBoundingClientRect().top;
+    const trigger = window.innerHeight*0.85;
+    if(top<trigger && !typedBlocks.has(block)){
+      block.classList.add('visible');
+      typedBlocks.add(block);
+      const lines = Array.from(block.querySelectorAll('.poetry p'));
+      typeParagraphSequential(lines);
+    }
+  });
 }
 
 window.addEventListener('scroll', handleScroll);
