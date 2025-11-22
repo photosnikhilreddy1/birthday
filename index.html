@@ -232,31 +232,36 @@ again, again, and always.</p>
 </div>
 
 <script>
-const blocks = document.querySelectorAll('.event-block');
-
-function typeParagraph(p, text, delay=50) {
+function typeParagraphSequential(lines, delay=40, lineDelay=400, index=0){
+  if(index >= lines.length) return;
+  const p = lines[index];
+  const text = p.textContent;
   p.textContent = '';
-  let i=0;
-  function typing() {
-    if(i<text.length){
+  let i = 0;
+  function typing(){
+    if(i < text.length){
       p.textContent += text[i];
       i++;
       setTimeout(typing, delay);
+    } else {
+      setTimeout(() => {
+        typeParagraphSequential(lines, delay, lineDelay, index+1);
+      }, lineDelay);
     }
   }
   typing();
 }
 
+const blocks = document.querySelectorAll('.event-block');
+
 window.addEventListener('scroll', () => {
   const trigger = window.innerHeight * 0.85;
   blocks.forEach(block => {
     const top = block.getBoundingClientRect().top;
-    if(top < trigger && !block.classList.contains('visible')) {
+    if(top < trigger && !block.classList.contains('visible')){
       block.classList.add('visible');
       const lines = block.querySelectorAll('.poetry p');
-      lines.forEach((line,i) => {
-        setTimeout(() => { typeParagraph(line, line.textContent); }, i*700);
-      });
+      typeParagraphSequential(Array.from(lines), 40, 400);
     }
   });
 });
