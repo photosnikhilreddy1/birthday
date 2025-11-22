@@ -7,15 +7,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-x:hidden; scroll-behavior: smooth; }
+body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-x:hidden; scroll-behavior:smooth; }
 
-/* Floating hearts */
+/* Floating hearts background */
 .emoji {
   position: fixed;
   font-size: 28px;
-  opacity: 0.6;
+  opacity: 0.2;
   pointer-events: none;
-  animation: float 20s linear infinite;
+  animation: float 25s linear infinite;
 }
 @keyframes float {
   0% { transform: translateY(100vh) scale(1); }
@@ -68,13 +68,16 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
 .poetry { 
   font-family: 'Playfair Display', serif; 
   font-size:20px; 
-  line-height:1.4; /* reduce line height */
+  line-height:1.3; /* compact within stanza */
   color:#eee; 
   white-space:pre-line; 
 }
 .poetry p { 
-  margin-bottom:5px; /* smaller spacing */
+  margin-bottom:0; 
   visibility:hidden; 
+}
+.poetry p.stanza-end { 
+  margin-bottom:15px; /* space after stanza */
 }
 
 /* Next event teaser */
@@ -88,6 +91,30 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
   opacity:0.6;
   font-style:italic;
 }
+
+/* Love message */
+.love-message {
+  background:#e63946;
+  color:#fff;
+  border-radius:15px;
+  padding:50px 30px;
+  text-align:center;
+  font-family: 'Playfair Display', serif;
+  font-size:22px;
+  line-height:1.5;
+  box-shadow:0 10px 25px rgba(255,0,70,0.4);
+  position:relative;
+  overflow:hidden;
+}
+.love-message::before {
+  content:'❤️';
+  position:absolute;
+  font-size:40px;
+  top:-20px;
+  left:50%;
+  transform:translateX(-50%);
+  opacity:0.2;
+}
 </style>
 </head>
 <body>
@@ -95,12 +122,12 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
 <!-- Floating hearts -->
 <script>
 const emojiCount = 8; 
-const symbols = ['❤️','🎂','💖'];
+const symbols = ['❤️','💖'];
 for(let i=0;i<emojiCount;i++){
   let emoji = document.createElement('div');
   emoji.className='emoji';
   emoji.style.left = Math.random()*100 + 'vw';
-  emoji.style.animationDuration = (15 + Math.random()*10)+'s';
+  emoji.style.animationDuration = (20 + Math.random()*15)+'s';
   emoji.innerHTML = symbols[Math.floor(Math.random()*symbols.length)];
   document.body.appendChild(emoji);
 }
@@ -116,17 +143,20 @@ for(let i=0;i<emojiCount;i++){
 <p>Our first beer.</p>
 <p>Your eyes speaking quietly to mine.</p>
 <p>A comfort I didn’t expect.</p>
-<p>A spark I didn’t understand yet.</p>
+<p class="stanza-end">A spark I didn’t understand yet.</p>
+
 <p>The bike ride after—</p>
 <p>cool air, soft silence, shared space.</p>
 <p>Your hand on my shoulder—warm, gentle, grounding.</p>
-<p>A touch that stayed in my mind long after.</p>
+<p class="stanza-end">A touch that stayed in my mind long after.</p>
+
 <p>And somewhere inside,</p>
 <p>a small wish began—</p>
-<p>a simple side hug, someday.</p>
+<p class="stanza-end">a simple side hug, someday.</p>
+
 <p>A tiny beginning.</p>
 <p>A quiet start.</p>
-<p>But it was the start of us.</p>
+<p class="stanza-end">But it was the start of us.</p>
 </div>
 <div class="next-teaser">Next: Super Townhouse Oak AECS →</div>
 </div>
@@ -137,14 +167,13 @@ for(let i=0;i<emojiCount;i++){
 <div class="poetry">
 <p>The hotel room felt warm and quiet,</p>
 <p>a space filled with nerves, excitement,</p>
-<p>and a gentle pull toward you.</p>
+<p class="stanza-end">and a gentle pull toward you.</p>
+
 <p>Your first hug—like <b>butterflies waking all at once</b>,</p>
 <p>fluttering through my chest, making my breath feel weightless.</p>
-<p>Then came our first closeness—</p>
-<p>nervous, tender, slow…</p>
-<p>two unsure hearts stepping into something new.</p>
-<p>That night felt like a shift—</p>
-<p>a quiet spark, a silent confession, a feeling that stayed long after.</p>
+<p class="stanza-end">Then came our first closeness—nervous, tender, slow… two unsure hearts stepping into something new.</p>
+
+<p class="stanza-end">That night felt like a shift— a quiet spark, a silent confession, a feeling that stayed long after.</p>
 </div>
 <div class="next-teaser">Next: Cricket Field →</div>
 </div>
@@ -157,11 +186,10 @@ for(let i=0;i<emojiCount;i++){
 <p>your presence turning the whole place warm,</p>
 <p>as if the noise faded the moment you looked my way.</p>
 <p>I played with a little extra fire,</p>
-<p>hoping you’d see me, notice me, maybe even feel a spark because of me.</p>
+<p class="stanza-end">hoping you’d see me, notice me, maybe even feel a spark because of me.</p>
+
 <p>And when I caught you watching—</p>
-<p>that soft, adoring glance you thought I didn’t notice—</p>
-<p>it felt like the sweetest victory,</p>
-<p>the kind that touched my heart more than the game ever could.</p>
+<p class="stanza-end">that soft, adoring glance you thought I didn’t notice— it felt like the sweetest victory, the kind that touched my heart more than the game ever could.</p>
 </div>
 <div class="next-teaser">Next: 153 Biere Street →</div>
 </div>
@@ -173,13 +201,23 @@ for(let i=0;i<emojiCount;i++){
 <p>Restobar lights, cold beer, your warmth closer than ever.</p>
 <p>Parking lot pressed us together, hands exploring, lips devouring.</p>
 <p>Cuddles heavy, breaths tangled, desire spilling over, every touch claiming more.</p>
-<p>Even the small bite that drew blood couldn’t stop the fire between us.</p>
+<p class="stanza-end">Even the small bite that drew blood couldn’t stop the fire between us.</p>
 </div>
 <div class="next-teaser">Next: Akoya →</div>
 </div>
 
-<!-- Add remaining events similarly -->
-<!-- Akoya, Happy Stays, Phoenix, Zipshree, Jungle, Marathahalli, Akoya (Nov), Food and Love Message -->
+<!-- Continue adding all other events similarly, each with poetry lines and stanza-end -->
+<!-- ... -->
+
+<!-- Love Message -->
+<div class="love-message">
+<p>If there’s one truth my heart knows now,<br>
+it’s that you’re the warmth I return to,<br>
+the chaos I crave,<br>
+the softness I fall into,<br>
+and the story I want to keep writing —<br>
+again, again, and always.</p>
+</div>
 
 </div>
 
