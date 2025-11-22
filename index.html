@@ -399,4 +399,54 @@ for(let i=0;i<emojiCount;i++){
 <p>the chaos I crave,</p>
 <p>the softness I fall into,</p>
 <p>and the story I want to keep writing —</p>
-<p>again, again, and always.</p
+<p>again, again, and always.</p>
+</div>
+
+</div>
+
+<script>
+// Typing animation
+function typeParagraphSequential(lines, delay=40, lineDelay=400, index=0, callback=null){
+  if(index >= lines.length){
+    if(callback) callback();
+    return;
+  }
+  const p = lines[index];
+  const text = p.textContent;
+  p.textContent = '';
+  p.style.visibility = 'visible';
+  let i = 0;
+  function typing(){
+    if(i < text.length){
+      p.textContent += text[i];
+      i++;
+      setTimeout(typing, delay);
+    } else {
+      setTimeout(() => {
+        typeParagraphSequential(lines, delay, lineDelay, index+1, callback);
+      }, lineDelay);
+    }
+  }
+  typing();
+}
+
+// Scroll logic: one block at a time
+const blocks = Array.from(document.querySelectorAll('.event-block'));
+let currentBlock = 0;
+function handleScroll(){
+  if(currentBlock >= blocks.length) return;
+  const block = blocks[currentBlock];
+  const top = block.getBoundingClientRect().top;
+  const trigger = window.innerHeight * 0.85;
+  if(top < trigger && !block.classList.contains('visible')){
+    block.classList.add('visible');
+    const lines = Array.from(block.querySelectorAll('.poetry p'));
+    typeParagraphSequential(lines, 40, 400, 0, () => { currentBlock++; });
+  }
+}
+window.addEventListener('scroll', handleScroll);
+window.addEventListener('load', handleScroll);
+</script>
+
+</body>
+</html>
