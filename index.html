@@ -1,18 +1,18 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Our Love Story</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-x:hidden; }
 
-/* Floating hearts */
+/* Floating emojis */
 .emoji {
   position: fixed;
-  font-size: 28px;
+  font-size: 24px;
   opacity: 0.7;
   pointer-events: none;
   animation-name: float;
@@ -20,12 +20,11 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
   animation-timing-function: linear;
 }
 @keyframes float {
-  0% { transform: translateY(100vh) scale(1) rotate(0deg); opacity:0.3; }
-  50% { opacity:0.9; }
-  100% { transform: translateY(-100vh) scale(1.2) rotate(360deg); opacity:0.3; }
+  0% { transform: translateY(100vh) scale(1) rotate(0deg); opacity:0.5; }
+  50% { opacity:1; }
+  100% { transform: translateY(-100vh) scale(1.2) rotate(360deg); opacity:0.5; }
 }
 
-/* Container */
 .container { max-width:900px; margin:0 auto; padding:50px 20px; display:flex; flex-direction:column; gap:50px; }
 
 /* Event Block */
@@ -37,6 +36,7 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
   transform: translateY(50px) scale(0.95);
   transition: all 0.8s ease;
   min-height: 90vh;
+  position: relative;
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -47,29 +47,20 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
 
 /* Event Header */
 .event-block h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 28px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 36px;
   color: #ff577f;
   display:flex;
   align-items:center;
   gap:15px;
-  margin-bottom:25px;
+  margin-bottom:30px;
 }
-.event-block h2 a {
-  font-size:32px;
-  color:#ff577f;
-  text-decoration:underline;
-  font-weight:700;
-}
-.event-date {
-  font-size:18px;
-  color:#fff;
-  margin-left:15px;
-}
+.event-block h2 a { font-size:16px; color:#fff; text-decoration:none; }
 
 /* Poetry Text */
-.poetry { font-size:18px; line-height:1.5; color:#eee; }
-.poetry p { margin-bottom:10px; visibility:hidden; }
+.poetry { font-family: 'Dancing Script', cursive; font-size:22px; line-height:1.7; color:#eee; }
+.poetry .stanza { margin-bottom:25px; }
+.poetry p { margin-bottom:8px; visibility:hidden; }
 
 /* Love Message */
 .love-message {
@@ -78,15 +69,15 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
   border-radius:15px;
   padding:50px 30px;
   text-align:center;
-  font-family: 'Playfair Display', serif;
-  font-size:22px;
-  line-height:1.6;
+  font-family: 'Dancing Script', cursive;
+  font-size:26px;
+  line-height:1.8;
   box-shadow:0 10px 25px rgba(255,0,70,0.4);
   position:relative;
   overflow:hidden;
 }
 .love-message::before {
-  content:'❤️';
+  content:'❤️🎂❤️';
   position:absolute;
   font-size:40px;
   top:-20px;
@@ -94,19 +85,34 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
   transform:translateX(-50%);
   opacity:0.2;
 }
+
+/* Scroll indicator */
+.scroll-indicator {
+  position:absolute;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:24px;
+  opacity:0.6;
+  animation: bounce 1.5s infinite;
+}
+@keyframes bounce {
+  0%,100% { transform: translate(-50%,0); }
+  50% { transform: translate(-50%,10px); }
+}
 </style>
 </head>
 <body>
 
+<!-- Floating emojis -->
 <script>
-// Floating hearts
-const emojiCount = 10; 
-const symbols = ['❤️','💖','💕'];
+const emojiCount = 10;
+const symbols = ['❤️','🎂','💖'];
 for(let i=0;i<emojiCount;i++){
   let emoji = document.createElement('div');
   emoji.className='emoji';
   emoji.style.left = Math.random()*100 + 'vw';
-  emoji.style.animationDuration = (15 + Math.random()*10)+'s';
+  emoji.style.animationDuration = (10 + Math.random()*10)+'s';
   emoji.innerHTML = symbols[Math.floor(Math.random()*symbols.length)];
   document.body.appendChild(emoji);
 }
@@ -118,204 +124,281 @@ for(let i=0;i<emojiCount;i++){
 <div class="event-block">
 <h2><a href="https://maps.app.goo.gl/y1ua36iZJ3gJsMLZ8" target="_blank">First Date - Windmill Whispers</a> <span class="event-date">20 June</span></h2>
 <div class="poetry">
-<p>A windmill turning slow.</p>
-<p>Our first beer.</p>
-<p>Your eyes speaking quietly to mine.</p>
-<p>A comfort I didn’t expect.</p>
-<p>A spark I didn’t understand yet.</p>
-
-<p>The bike ride after—</p>
-<p>cool air, soft silence, shared space.</p>
-<p>Your hand on my shoulder—warm, gentle, grounding.</p>
-<p>A touch that stayed in my mind long after.</p>
-
-<p>And somewhere inside,</p>
-<p>a small wish began—</p>
-<p>a simple side hug, someday.</p>
-
-<p>A tiny beginning.</p>
-<p>A quiet start.</p>
-<p>But it was the start of us.</p>
+  <div class="stanza">
+    <p>A windmill turning slow.</p>
+    <p>Our first beer.</p>
+    <p>Your eyes speaking quietly to mine.</p>
+    <p>A comfort I didn’t expect.</p>
+    <p>A spark I didn’t understand yet.</p>
+  </div>
+  <div class="stanza">
+    <p>The bike ride after—</p>
+    <p>cool air, soft silence, shared space.</p>
+    <p>Your hand on my shoulder—warm, gentle, grounding.</p>
+    <p>A touch that stayed in my mind long after.</p>
+  </div>
+  <div class="stanza">
+    <p>And somewhere inside,</p>
+    <p>a small wish began—</p>
+    <p>a simple side hug, someday.</p>
+  </div>
+  <div class="stanza">
+    <p>A tiny beginning.</p>
+    <p>A quiet start.</p>
+    <p>But it was the start of us.</p>
+  </div>
 </div>
+<div class="scroll-indicator">⬇️</div>
 </div>
 
 <!-- Event 2 -->
 <div class="event-block">
 <h2><a href="https://maps.app.goo.gl/DetrGbQWcvJKMtJK9" target="_blank">First Hug - Felt like Home</a> <span class="event-date">26 June</span></h2>
 <div class="poetry">
-<p>The hotel room felt warm and quiet, a space filled with nerves, excitement, and a gentle pull toward you.</p>
-<p>Your first hug—like <b>butterflies waking all at once</b>, their soft wings fluttering through my chest, making my breath feel warm and weightless.</p>
-<p>Then came our first closeness—nervous, tender, slow… two unsure hearts stepping into something new.</p>
-<p>That night felt like a shift—a quiet spark, a silent confession, a feeling that stayed long after.</p>
+  <div class="stanza">
+    <p>The hotel room felt warm and quiet,</p>
+    <p>a space filled with nerves, excitement,</p>
+    <p>and a gentle pull toward you.</p>
+  </div>
+  <div class="stanza">
+    <p>Your first hug—</p>
+    <p>a single moment that opened inside me</p>
+    <p>like butterflies waking all at once,</p>
+    <p>their soft wings fluttering through my chest,</p>
+    <p>making my breath feel warm and weightless.</p>
+  </div>
+  <div class="stanza">
+    <p>Then came our first closeness—</p>
+    <p>nervous, tender, slow…</p>
+    <p>two unsure hearts stepping into something new,</p>
+    <p>learning each other with trembling hands</p>
+    <p>but finding comfort in the warmth we shared.</p>
+    <p>Nervous, yes—</p>
+    <p>but beautifully kind,</p>
+    <p>beautifully ours.</p>
+  </div>
+  <div class="stanza">
+    <p>That night felt like a shift—</p>
+    <p>a quiet spark,</p>
+    <p>a silent confession,</p>
+    <p>a feeling that stayed long after.</p>
+  </div>
 </div>
+<div class="scroll-indicator">⬇️</div>
 </div>
 
 <!-- Event 3 -->
 <div class="event-block">
-<h2><a href="https://maps.app.goo.gl/8QcMrJNAsCu5vheMA" target="_blank">Bowled Over</a> <span class="event-date">2 July</span></h2>
+<h2><a href="https://maps.app.goo.gl/8QcMrJNAsCu5vheMA" target="_blank">Bowled Over</a></h2>
 <div class="poetry">
-<p>Having you on the cricket field felt unexpectedly tender—your presence turning the whole place warm.</p>
-<p>I played with a little extra fire, hoping you’d see me, notice me, maybe even feel a spark because of me.</p>
-<p>And when I caught you watching—that soft, adoring glance—you thought I didn’t notice—it felt like the sweetest victory.</p>
+  <div class="stanza">
+    <p>On the cricket field, your eyes found mine,</p>
+    <p>The crowd grew dim, your gaze made me shine,</p>
+    <p>I swung and ran with more fire, more play,</p>
+    <p>Hoping my moves would steal your glance that day.</p>
 </div>
+<div class="stanza">
+    <p>Every catch, every run, I gave my all,</p>
+    <p>Praying you’d notice, that I’d make you fall,</p>
+    <p>And when our eyes met, that secret delight,</p>
+    <p>Made the game, the world, feel perfectly right.</p>
+</div>
+</div>
+<div class="scroll-indicator">⬇️</div>
 </div>
 
 <!-- Event 4 -->
 <div class="event-block">
 <h2><a href="#" target="_blank">Bier & Burning Desire</a> <span class="event-date">15 July</span></h2>
 <div class="poetry">
-<p>Restobar lights, cold beer, your warmth closer than ever.</p>
-<p>Parking lot pressed us together, hands exploring, lips devouring.</p>
-<p>Cuddles heavy, breaths tangled, desire spilling over, every touch claiming more.</p>
-<p>Even the small bite that drew blood couldn’t stop the fire between us.</p>
+  <div class="stanza">
+    <p>Restobar lights, cold beer in hand,</p>
+    <p>Your warmth so close, I could barely stand,</p>
+    <p>In the parking lot, our hands explored,</p>
+    <p>Lips collided, craving more and more.</p>
 </div>
+<div class="stanza">
+    <p>Cuddles tangled, breaths that intertwine,</p>
+    <p>Desire spilled with every touch, divine,</p>
+    <p>Even the bite that drew a little red,</p>
+    <p>Couldn’t quench the fire that spread.</p>
+</div>
+</div>
+<div class="scroll-indicator">⬇️</div>
 </div>
 
 <!-- Event 5 -->
 <div class="event-block">
 <h2><a href="#" target="_blank">Secret Lust Whispers</a> <span class="event-date">6 Aug</span></h2>
 <div class="poetry">
-<p>That day felt charged from the moment we met—wine warming us, desire flickering in every glance.</p>
-<p>Everything between us clicked instantly—your closeness, my racing breath, our bodies answering each other.</p>
-<p>The wild moments came fast—bold hands, daring kisses, a heat that rose and rose until it drowned every thought except you.</p>
-<p>And when the storm settled, biryani and tender coconut pudding felt calm and sweet.</p>
+  <div class="stanza">
+    <p>That day felt charged from the moment we met—</p>
+    <p>wine warming us,</p>
+    <p>desire flickering in every glance,</p>
+    <p>every small touch already pulling us closer.</p>
+  </div>
+  <div class="stanza">
+    <p>Everything between us clicked instantly—</p>
+    <p>your closeness, my racing breath,</p>
+    <p>our bodies answering each other</p>
+    <p>with a hungry, unstoppable honesty.</p>
+  </div>
+  <div class="stanza">
+    <p>The wild moments came fast—</p>
+    <p>bold hands, daring kisses, a heat that rose and rose</p>
+    <p>until it drowned every thought except you.</p>
+    <p>The wind only made it crazier, turning our closeness into thrill,</p>
+    <p>every move sharper, deeper,</p>
+    <p>a rush that blew my mind completely.</p>
+  </div>
+  <div class="stanza">
+    <p>And when the storm settled,</p>
+    <p>when our breaths finally softened,</p>
+    <p>biryani and tender coconut pudding felt calm and sweet—</p>
+    <p>a soft ending to a day that burned beautifully between us.</p>
+  </div>
 </div>
+<div class="scroll-indicator">⬇️</div>
 </div>
 
 <!-- Event 6 -->
 <div class="event-block">
-<h2><a href="#" target="_blank">Happy Stays</a> <span class="event-date">12 Aug</span></h2>
+<h2><a href="#" target="_blank">Messy Hustle</a> <span class="event-date">12 Aug</span></h2>
 <div class="poetry">
-<p>Weekend trip felt magical, a small escape just for us.</p>
-<p>Walking hand in hand, laughter echoing, hearts aligned.</p>
-<p>Every glance, every touch, felt like poetry in motion.</p>
-<p>Moments so simple, yet so unforgettable.</p>
+  <div class="stanza">
+    <p>Mad, wild, unforgettable moments that left us breathless in the best way.</p>
+    <p>And the biryani mix-up, our little hustle to get it back—messy, funny, and somehow perfectly us.</p>
+  </div>
 </div>
+<div class="scroll-indicator">⬇️</div>
 </div>
 
 <!-- Event 7 -->
 <div class="event-block">
-<h2><a href="#" target="_blank">Phoenix Nights</a> <span class="event-date">20 Aug</span></h2>
+<h2><a href="#" target="_blank">Parking Lot Kisses</a> <span class="event-date">20 Aug</span></h2>
 <div class="poetry">
-<p>The city lights glowing, the music soft.</p>
-<p>Your smile caught mine in the dim streets.</p>
-<p>Silent conversations through looks, a bond deepening.</p>
-<p>That night, everything felt endless and infinite.</p>
+  <div class="stanza">
+    <p>Parking lot kisses—hot, stolen,</p>
+    <p>the kind that spark right through the skin,</p>
+    <p>until security’s flashlight found us</p>
+    <p>and we broke apart laughing, breathless, guilty, wanting more.</p>
+  </div>
+  <div class="stanza">
+    <p>The movie date carried our longing further,</p>
+    <p>fingers tracing secrets only we could feel.</p>
+  </div>
+  <div class="stanza">
+    <p>Triple Schezwan was its own kind of heat—</p>
+    <p>spicy, messy, addictive,</p>
+    <p>just like us that day.</p>
+  </div>
+  <div class="stanza">
+    <p>And window-shopping through brand stores</p>
+    <p>felt strangely intimate—</p>
+    <p>your hand brushing mine,</p>
+    <p>your eyes catching me,</p>
+    <p>desire hiding in every “casual” glance.</p>
+    <p>A lusty little adventure,</p>
+    <p>sweet, reckless, and perfectly ours.</p>
+  </div>
 </div>
+<div class="scroll-indicator">⬇️</div>
 </div>
 
 <!-- Event 8 -->
 <div class="event-block">
-<h2><a href="#" target="_blank">Zipshree Adventures</a> <span class="event-date">1 Sept</span></h2>
+<h2><a href="#" target="_blank">Smirnoff Night</a> <span class="event-date">28 Aug</span></h2>
 <div class="poetry">
-<p>Thrills, laughter, and whispers—our hearts racing together.</p>
-<p>Every jump, every glide, felt like flying side by side.</p>
-<p>A day filled with adrenaline yet tender touches.</p>
-<p>The closeness in the chaos made it unforgettable.</p>
+  <div class="stanza">
+    <p>Smirnoff warming our voices,</p>
+    <p>our hearts already running too fast for their own good.</p>
+  </div>
+  <div class="stanza">
+    <p>A small fight sparked—</p>
+    <p>sharp words, sharper silence—</p>
+    <p>but underneath it all was love burning too intensely to hide.</p>
+  </div>
+  <div class="stanza">
+    <p>Your bruised face still breaks me a little—</p>
+    <p>I’m sorry for every moment that hurt you,</p>
+    <p>every emotion that turned too heavy,</p>
+    <p>every feeling that hit harder than it should have.</p>
+  </div>
+  <div class="stanza">
+    <p>But in the middle of that storm,</p>
+    <p>the way we held each other afterward—</p>
+    <p>quiet, trembling, overflowing—</p>
+    <p>said more than apologies ever could.</p>
+  </div>
 </div>
+<div class="scroll-indicator">⬇️</div>
 </div>
 
 <!-- Event 9 -->
 <div class="event-block">
-<h2><a href="#" target="_blank">Jungle Romance</a> <span class="event-date">10 Sept</span></h2>
+<h2><a href="#" target="_blank">Jungle Stop</a> <span class="event-date">5 Sep</span></h2>
 <div class="poetry">
-<p>Walking through green paths, sounds of nature enveloping us.</p>
-<p>Your hand in mine, grounding yet electrifying.</p>
-<p>Shared smiles, secret jokes, moments only we understood.</p>
-<p>It was wild, free, and ours.</p>
+  <div class="stanza">
+    <p>Our kisses trembling with fear and desire,</p>
+    <p>every touch a forbidden spark as if someone might see,</p>
+    <p>the jungle stop turning us wild in the dark,</p>
+    <p>intimacy rising, suspense thick in the air, even mosquitos pausing like witnesses.</p>
+  </div>
 </div>
+<div class="scroll-indicator">⬇️</div>
 </div>
 
 <!-- Event 10 -->
 <div class="event-block">
-<h2><a href="#" target="_blank">Marathahalli Hotel</a> <span class="event-date">22 Sept</span></h2>
+<h2><a href="#" target="_blank">Mad Intimate Sessions</a> <span class="event-date">12 Sep</span></h2>
 <div class="poetry">
-<p>Room dimly lit, your laughter filling the air.</p>
-<p>Soft touches, whispers, and quiet sighs shared.</p>
-<p>Time slowed, and we existed only in our bubble.</p>
-<p>Every moment a memory etched forever.</p>
+  <div class="stanza">
+    <p>Mad mad intimate sessions that shook the night,</p>
+    <p>scars and bruises tracing the story on your skin,</p>
+    <p>a physical rush so new, so deep,</p>
+    <p>something I never knew my body could ever feel.</p>
+  </div>
 </div>
+<div class="scroll-indicator">⬇️</div>
 </div>
 
 <!-- Event 11 -->
 <div class="event-block">
-<h2><a href="#" target="_blank">Akoya November</a> <span class="event-date">15 Nov</span></h2>
+<h2><a href="#" target="_blank">Long-Aching Month</a> <span class="event-date">25 Sep</span></h2>
 <div class="poetry">
-<p>November chill, warm drinks, hearts intertwined.</p>
-<p>Our conversation flowed effortlessly, like it always did.</p>
-<p>Simple moments felt profound, laughter echoing softly.</p>
-<p>That night marked another chapter in our story.</p>
+  <div class="stanza">
+    <p>Sex after a long, aching month apart,</p>
+    <p>cuddles melting into warm, naked hugs,</p>
+    <p>bodies remembering each other in silence,</p>
+    <p>everything soft, slow, and impossibly good.</p>
+  </div>
 </div>
+<div class="scroll-indicator">⬇️</div>
 </div>
 
 <!-- Event 12 -->
 <div class="event-block">
-<h2><a href="#" target="_blank">Final Sunset</a> <span class="event-date">25 Dec</span></h2>
+<h2><a href="#" target="_blank">Food & Wine Moments</a> <span class="event-date">Oct–Nov</span></h2>
 <div class="poetry">
-<p>The sun setting behind the horizon, painting the sky.</p>
-<p>Your hand found mine, holding tightly as the world faded away.</p>
-<p>We watched, silent yet complete, knowing our story was just beginning.</p>
-<p>Every ending felt like a promise of forever.</p>
+  <div class="stanza">
+    <p>Food with you is its own comfort — biryani, pizza, cold coffee.</p>
+    <p>Wine and vodka nights — everything tastes better with you.</p>
+  </div>
+  <div class="stanza">
+    <p>Manifesting more intimacy, more adventure, more love, more raw moments,</p>
+    <p>a lifetime friend, a lifetime fire, a lifetime “us.”</p>
+    <p>Manifesting Goa dates for years and decades,</p>
+    <p>until these breaths soften… and fade… yet still choose you.</p>
+  </div>
 </div>
+<div class="scroll-indicator">⬇️</div>
 </div>
 
-<!-- Love Message -->
+<!-- Final Love Message -->
 <div class="love-message">
-<p>If there’s one truth my heart knows now,<br>
-it’s that you’re the warmth I return to,<br>
-the chaos I crave,<br>
-the softness I fall into,<br>
-and the story I want to keep writing —<br>
-again, again, and always.</p>
-</div>
-
-</div>
-
-<script>
-// Sequential typing
-function typeParagraphSequential(lines, delay=40, lineDelay=400, index=0, callback=null){
-  if(index >= lines.length){
-    if(callback) callback();
-    return;
-  }
-  const p = lines[index];
-  const text = p.textContent;
-  p.textContent = '';
-  p.style.visibility = 'visible';
-  let i = 0;
-  function typing(){
-    if(i < text.length){
-      p.textContent += text[i];
-      i++;
-      setTimeout(typing, delay);
-    } else {
-      setTimeout(() => {
-        typeParagraphSequential(lines, delay, lineDelay, index+1, callback);
-      }, lineDelay);
-    }
-  }
-  typing();
-}
-
-// Scroll logic: one block at a time
-const blocks = Array.from(document.querySelectorAll('.event-block'));
-let currentBlock = 0;
-function handleScroll(){
-  if(currentBlock >= blocks.length) return;
-  const block = blocks[currentBlock];
-  const top = block.getBoundingClientRect().top;
-  const trigger = window.innerHeight * 0.85;
-  if(top < trigger && !block.classList.contains('visible')){
-    block.classList.add('visible');
-    const lines = Array.from(block.querySelectorAll('.poetry p'));
-    typeParagraphSequential(lines, 40, 300, 0, () => {
-      currentBlock++;
-    });
-  }
-}
-window.addEventListener('scroll', handleScroll);
-window.addEventListener('load', handleScroll);
-</script>
-
-</body>
-</html>
+<p>If there’s one truth my heart knows now,</p>
+<p>it’s that you’re the warmth I return to,</p>
+<p>the chaos I crave,</p>
+<p>the softness I fall into,</p>
+<p>and the story I want to keep writing —</p>
+<p>again, again, and always.</p
