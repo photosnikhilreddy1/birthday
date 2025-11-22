@@ -9,7 +9,7 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-x:hidden; }
 
-/* Floating love symbol */
+/* Floating love symbols */
 .emoji {
   position: fixed;
   font-size: 30px;
@@ -23,6 +23,7 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
   100% { transform: translateY(-100vh) scale(1.2) rotate(360deg); opacity:0.3; }
 }
 
+/* Container */
 .container { max-width:900px; margin:0 auto; padding:50px 20px; display:flex; flex-direction:column; gap:50px; }
 
 /* Event Block */
@@ -33,7 +34,6 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
   flex-wrap: wrap;
   border-radius: 15px;
   padding: 30px 25px;
-  overflow: hidden;
   opacity:0;
   transform: translateY(50px) scale(0.95);
   transition: all 0.8s ease;
@@ -43,12 +43,12 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
 .event-block:nth-child(odd) { background: #1a1a1a; }
 .event-block.visible { opacity:1; transform: translateY(0) scale(1); }
 
-/* Header */
+/* Event Header */
 .event-block h2 {
   font-family: 'Playfair Display', serif;
   font-size: 24px;
   color: #ff577f;
-  width: 100%;
+  width:100%;
   margin-bottom: 15px;
 }
 
@@ -60,7 +60,7 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
   line-height:1.4;
   color:#eee;
 }
-.poetry p { margin-bottom:8px; min-height:22px; }
+.poetry p { margin-bottom:6px; min-height:22px; }
 
 /* Event Image */
 .event-photo {
@@ -70,7 +70,7 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
   flex-shrink:0;
 }
 
-/* Love Message at the end */
+/* Love Message */
 .love-message {
   background:#e63946;
   color:#fff;
@@ -97,7 +97,7 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
 </head>
 <body>
 
-<!-- Floating love symbol -->
+<!-- Floating love symbols -->
 <script>
 const emojiCount = 5; 
 const symbols = ['❤️'];
@@ -266,12 +266,9 @@ again, again, and always.</p>
 </div>
 
 <script>
-// Sequential typing function
-function typeParagraphSequential(lines, delay=40, lineDelay=400, index=0, callback=null){
-  if(index >= lines.length){
-    if(callback) callback();
-    return;
-  }
+// Sequential typing for each block
+function typeParagraphSequential(lines, delay=40, lineDelay=400, index=0){
+  if(index >= lines.length) return;
   const p = lines[index];
   const text = p.textContent;
   p.textContent = '';
@@ -282,3 +279,32 @@ function typeParagraphSequential(lines, delay=40, lineDelay=400, index=0, callba
       i++;
       setTimeout(typing, delay);
     } else {
+      setTimeout(() => {
+        typeParagraphSequential(lines, delay, lineDelay, index+1);
+      }, lineDelay);
+    }
+  }
+  typing();
+}
+
+// Show and animate blocks on scroll
+const blocks = Array.from(document.querySelectorAll('.event-block'));
+
+function handleScroll(){
+  blocks.forEach(block => {
+    const top = block.getBoundingClientRect().top;
+    const trigger = window.innerHeight * 0.85;
+    if(top < trigger && !block.classList.contains('visible')){
+      block.classList.add('visible');
+      const lines = Array.from(block.querySelectorAll('.poetry p'));
+      typeParagraphSequential(lines);
+    }
+  });
+}
+
+window.addEventListener('scroll', handleScroll);
+window.addEventListener('load', handleScroll);
+</script>
+
+</body>
+</html>
