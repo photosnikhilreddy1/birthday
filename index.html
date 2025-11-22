@@ -7,33 +7,34 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-x:hidden; }
+body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-x:hidden; scroll-behavior: smooth; }
 
-/* Single floating love symbol */
+/* Floating hearts */
 .emoji {
   position: fixed;
   font-size: 28px;
   opacity: 0.6;
   pointer-events: none;
-  animation: float 15s linear infinite;
+  animation: float 20s linear infinite;
 }
 @keyframes float {
   0% { transform: translateY(100vh) scale(1); }
   100% { transform: translateY(-10vh) scale(1.1); }
 }
 
-.container { max-width:900px; margin:0 auto; padding:50px 20px; display:flex; flex-direction:column; gap:50px; }
+/* Container */
+.container { max-width:900px; margin:0 auto; }
 
-/* Event Block */
+/* Full page event */
 .event-block {
   border-radius: 15px;
-  padding: 40px 30px;
-  min-height: auto;
+  padding: 60px 30px;
+  min-height:100vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
   opacity:0;
-  transform: scale(0.8) translateY(50px);
+  transform: scale(0.9) translateY(50px);
   transition: all 0.8s ease;
   position: relative;
 }
@@ -46,26 +47,11 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
 }
 @keyframes splash {
   0% { transform: scale(0.8) translateY(50px); opacity:0; }
-  50% { transform: scale(1.1) translateY(-10px); opacity:1; }
+  50% { transform: scale(1.05) translateY(-10px); opacity:1; }
   100% { transform: scale(1) translateY(0); opacity:1; }
 }
 
-/* Scroll indicator */
-.scroll-indicator {
-  position:absolute;
-  bottom:20px;
-  left:50%;
-  transform:translateX(-50%);
-  font-size:24px;
-  opacity:0.5;
-  animation: bounce 1.5s infinite;
-}
-@keyframes bounce {
-  0%,100% { transform: translate(-50%,0); }
-  50% { transform: translate(-50%,10px); }
-}
-
-/* Event Header */
+/* Event header */
 .event-block h2 {
   font-family: 'Playfair Display', serif;
   font-size: 28px;
@@ -79,82 +65,117 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
 .event-block h2 a { font-size:14px; color:#fff; text-decoration:none; }
 
 /* Poetry text */
-.poetry { font-size:18px; line-height:1.7; color:#eee; }
-.poetry p { margin-bottom:15px; min-height:22px; visibility:hidden; }
+.poetry { font-family: 'Playfair Display', serif; font-size:20px; line-height:2; color:#eee; white-space:pre-line; }
+.poetry p { margin-bottom:15px; visibility:hidden; }
 
-/* Love message */
-.love-message {
-  background:#e63946;
-  color:#fff;
-  border-radius:15px;
-  padding:50px 30px;
-  text-align:center;
-  font-family: 'Playfair Display', serif;
-  font-size:22px;
-  line-height:1.8;
-  box-shadow:0 10px 25px rgba(255,0,70,0.4);
-  position:relative;
-  overflow:hidden;
-}
-.love-message::before {
-  content:'❤️';
+/* Next event teaser */
+.next-teaser {
   position:absolute;
-  font-size:40px;
-  top:-20px;
+  bottom:30px;
   left:50%;
   transform:translateX(-50%);
-  opacity:0.2;
+  color:#ff577f;
+  font-size:18px;
+  opacity:0.6;
+  font-style:italic;
 }
 </style>
 </head>
 <body>
 
-<!-- Single floating emoji -->
-<div class="emoji">❤️</div>
+<!-- Floating hearts -->
+<script>
+const emojiCount = 8; 
+const symbols = ['❤️','🎂','💖'];
+for(let i=0;i<emojiCount;i++){
+  let emoji = document.createElement('div');
+  emoji.className='emoji';
+  emoji.style.left = Math.random()*100 + 'vw';
+  emoji.style.animationDuration = (15 + Math.random()*10)+'s';
+  emoji.innerHTML = symbols[Math.floor(Math.random()*symbols.length)];
+  document.body.appendChild(emoji);
+}
+</script>
 
 <div class="container">
 
-<!-- WindMill -->
+<!-- Event 1: WindMill -->
 <div class="event-block">
 <h2>WindMill: 20 June 2025 <a href="#"><img src="windmill.jpg" alt="Windmill"></a></h2>
 <div class="poetry">
-<p>A windmill turning slow. Our first beer. Your eyes speaking quietly to mine.</p>
-<p>The bike ride after—cool air, soft silence, shared space.</p>
-<p>Your hand on my shoulder—warm, gentle, grounding. A touch that stayed in my mind long after.</p>
-<p>And somewhere inside, a small wish began—a simple side hug, someday.</p>
-<p>A tiny beginning. A quiet start. But it was the start of us.</p>
+<p>A windmill turning slow.</p>
+<p>Our first beer.</p>
+<p>Your eyes speaking quietly to mine.</p>
+<p>A comfort I didn’t expect.</p>
+<p>A spark I didn’t understand yet.</p>
+<p>The bike ride after—</p>
+<p>cool air, soft silence, shared space.</p>
+<p>Your hand on my shoulder—warm, gentle, grounding.</p>
+<p>A touch that stayed in my mind long after.</p>
+<p>And somewhere inside,</p>
+<p>a small wish began—</p>
+<p>a simple side hug, someday.</p>
+<p>A tiny beginning.</p>
+<p>A quiet start.</p>
+<p>But it was the start of us.</p>
 </div>
-<div class="scroll-indicator">⬇️</div>
+<div class="next-teaser">Next: Super Townhouse Oak AECS →</div>
 </div>
 
-<!-- Super Townhouse -->
+<!-- Event 2: Super Townhouse -->
 <div class="event-block">
 <h2>Super Townhouse Oak AECS: 26 June <a href="#"><img src="hotel.jpg" alt="Hotel"></a></h2>
 <div class="poetry">
-<p>The hotel room felt warm and quiet, a space filled with nerves, excitement, and a gentle pull toward you.</p>
-<p>Your first hug—like <b>butterflies waking all at once</b>, fluttering through my chest, making my breath feel weightless.</p>
-<p>Then came our first closeness—nervous, tender, slow… two unsure hearts stepping into something new.</p>
-<p>That night felt like a shift— a quiet spark, a silent confession, a feeling that stayed long after.</p>
+<p>The hotel room felt warm and quiet,</p>
+<p>a space filled with nerves, excitement,</p>
+<p>and a gentle pull toward you.</p>
+<p>Your first hug—like <b>butterflies waking all at once</b>,</p>
+<p>fluttering through my chest, making my breath feel weightless.</p>
+<p>Then came our first closeness—</p>
+<p>nervous, tender, slow…</p>
+<p>two unsure hearts stepping into something new.</p>
+<p>That night felt like a shift—</p>
+<p>a quiet spark, a silent confession, a feeling that stayed long after.</p>
 </div>
-<div class="scroll-indicator">⬇️</div>
+<div class="next-teaser">Next: Cricket Field →</div>
 </div>
 
-<!-- Add remaining events similarly... -->
-
-<!-- Love Message -->
-<div class="love-message">
-<p>If there’s one truth my heart knows now,<br>
-it’s that you’re the warmth I return to,<br>
-the chaos I crave,<br>
-the softness I fall into,<br>
-and the story I want to keep writing —<br>
-again, again, and always.</p>
+<!-- Event 3: Cricket Field -->
+<div class="event-block">
+<h2>Cricket Field</h2>
+<div class="poetry">
+<p>Having you on the cricket field felt unexpectedly tender—</p>
+<p>your presence turning the whole place warm,</p>
+<p>as if the noise faded the moment you looked my way.</p>
+<p>I played with a little extra fire,</p>
+<p>hoping you’d see me, notice me, maybe even feel a spark because of me.</p>
+<p>And when I caught you watching—</p>
+<p>that soft, adoring glance you thought I didn’t notice—</p>
+<p>it felt like the sweetest victory,</p>
+<p>the kind that touched my heart more than the game ever could.</p>
 </div>
+<div class="next-teaser">Next: 153 Biere Street →</div>
+</div>
+
+<!-- Event 4: 153 Biere Street -->
+<div class="event-block">
+<h2>153 Biere Street</h2>
+<div class="poetry">
+<p>Restobar lights, cold beer, your warmth closer than ever.</p>
+<p>Parking lot pressed us together, hands exploring, lips devouring.</p>
+<p>Cuddles heavy, breaths tangled, desire spilling over, every touch claiming more.</p>
+<p>Even the small bite that drew blood couldn’t stop the fire between us.</p>
+</div>
+<div class="next-teaser">Next: Akoya →</div>
+</div>
+
+<!-- Add remaining events similarly -->
+<!-- Akoya, Happy Stays, Phoenix, Zipshree, Jungle, Marathahalli, Akoya (Nov), Food and Love Message -->
 
 </div>
 
 <script>
-// Sequential typing function (letter-by-letter)
+// Letter-by-letter typing function
 function typeParagraphSequential(lines, delay=40, lineDelay=400, index=0){
   if(index >= lines.length) return;
   const p = lines[index];
@@ -174,14 +195,14 @@ function typeParagraphSequential(lines, delay=40, lineDelay=400, index=0){
   typing();
 }
 
-// Scroll: zoom-in splash animation + typing
+// Scroll: splash/zoom animation + typing
 const blocks = Array.from(document.querySelectorAll('.event-block'));
 const typedBlocks = new Set();
 
 function handleScroll(){
   blocks.forEach(block=>{
     const top = block.getBoundingClientRect().top;
-    const trigger = window.innerHeight*0.85;
+    const trigger = window.innerHeight*0.8;
     if(top<trigger && !typedBlocks.has(block)){
       block.classList.add('visible');
       typedBlocks.add(block);
