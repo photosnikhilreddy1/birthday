@@ -7,92 +7,70 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-x:hidden; scroll-behavior:smooth; }
+body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-x:hidden; }
 
-/* Floating hearts background */
+/* Floating hearts */
 .emoji {
   position: fixed;
-  font-size: 28px;
-  opacity: 0.2;
+  font-size: 22px;
+  opacity: 0.8;
+  animation: float 18s linear infinite;
   pointer-events: none;
-  animation: float 25s linear infinite;
 }
 @keyframes float {
-  0% { transform: translateY(100vh) scale(1); }
-  100% { transform: translateY(-10vh) scale(1.1); }
+  0% { transform: translateY(100vh) scale(1) rotate(0deg); opacity:0.5; }
+  50% { opacity:1; }
+  100% { transform: translateY(-100vh) scale(1.2) rotate(360deg); opacity:0.5; }
 }
 
-/* Container */
-.container { max-width:900px; margin:0 auto; }
+.container { max-width:900px; margin:0 auto; padding:50px 20px; display:flex; flex-direction:column; gap:50px; }
 
-/* Full page event */
+/* Event Block */
 .event-block {
   border-radius: 15px;
-  padding: 60px 30px;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
+  padding: 30px 25px;
+  overflow: hidden;
   opacity:0;
-  transform: scale(0.9) translateY(50px);
+  transform: translateY(50px) scale(0.95);
   transition: all 0.8s ease;
+  border-left: 5px solid #e63946;
   position: relative;
 }
-.event-block:nth-child(odd) { background:#1a1a1a; }
-.event-block:nth-child(even) { background:#222; }
-.event-block.visible {
-  opacity:1;
-  transform: scale(1) translateY(0);
-  animation: splash 0.6s ease-out;
-}
-@keyframes splash {
-  0% { transform: scale(0.8) translateY(50px); opacity:0; }
-  50% { transform: scale(1.05) translateY(-10px); opacity:1; }
-  100% { transform: scale(1) translateY(0); opacity:1; }
-}
+.event-block:nth-child(even) { background: rgba(230,57,70,0.05); }
+.event-block:nth-child(odd) { background: #1a1a1a; }
+.event-block.visible { opacity:1; transform: translateY(0) scale(1); }
 
-/* Event header */
+/* Event Header */
 .event-block h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 28px;
+  font-size: 26px;
   color: #ff577f;
-  display:flex;
-  align-items:center;
-  gap:15px;
   margin-bottom:20px;
 }
-.event-block h2 img { width:50px; height:50px; object-fit:cover; border-radius:50%; }
-.event-block h2 a { font-size:14px; color:#fff; text-decoration:none; }
 
-/* Poetry text */
-.poetry { 
-  font-family: 'Playfair Display', serif; 
-  font-size:20px; 
-  line-height:1.2; /* compact lines */
-  color:#eee; 
-  white-space:pre-line; 
-}
-.poetry p { 
-  margin:0; 
-  visibility:hidden; 
-}
-.poetry p.stanza-end { 
-  margin-bottom:15px; /* space between stanzas */
+/* Poetry Text */
+.poetry { font-size:18px; line-height:1.5; color:#eee; }
+.poetry p { margin-bottom:5px; min-height:22px; }
+
+/* Event right image */
+.event-photo {
+    width:200px;
+    height:auto;
+    border-radius:15px;
+    float:right;
+    margin-left:20px;
+    margin-bottom:20px;
 }
 
 /* Next event teaser */
 .next-teaser {
-  position:absolute;
-  bottom:30px;
-  left:50%;
-  transform:translateX(-50%);
-  color:#ff577f;
-  font-size:18px;
-  opacity:0.6;
-  font-style:italic;
+    font-size:14px;
+    color:#ff577f;
+    margin-top:15px;
+    font-family: 'Playfair Display', serif;
 }
 
-/* Love message */
+/* Love Message */
 .love-message {
   background:#e63946;
   color:#fff;
@@ -101,7 +79,7 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
   text-align:center;
   font-family: 'Playfair Display', serif;
   font-size:22px;
-  line-height:1.5;
+  line-height:1.8;
   box-shadow:0 10px 25px rgba(255,0,70,0.4);
   position:relative;
   overflow:hidden;
@@ -119,16 +97,16 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
 </head>
 <body>
 
-<!-- Floating hearts -->
 <script>
-const emojiCount = 8; 
-const symbols = ['❤️','💖'];
+// Floating hearts
+const emojiCount = 6;
+const symbols = ['❤️'];
 for(let i=0;i<emojiCount;i++){
   let emoji = document.createElement('div');
   emoji.className='emoji';
   emoji.style.left = Math.random()*100 + 'vw';
-  emoji.style.animationDuration = (20 + Math.random()*15)+'s';
-  emoji.innerHTML = symbols[Math.floor(Math.random()*symbols.length)];
+  emoji.style.animationDuration = (12 + Math.random()*8)+'s';
+  emoji.innerHTML = symbols[0];
   document.body.appendChild(emoji);
 }
 </script>
@@ -137,181 +115,156 @@ for(let i=0;i<emojiCount;i++){
 
 <!-- Event 1: WindMill -->
 <div class="event-block">
-<h2>WindMill: 20 June 2025 <a href="#"><img src="windmill.jpg" alt="Windmill"></a></h2>
+<h2>WindMill: 20 June 2025</h2>
 <div class="poetry">
+<img src="windmill.jpg" alt="WindMill" class="event-photo">
 <p>A windmill turning slow.</p>
 <p>Our first beer.</p>
 <p>Your eyes speaking quietly to mine.</p>
 <p>A comfort I didn’t expect.</p>
-<p class="stanza-end">A spark I didn’t understand yet.</p>
+<p>A spark I didn’t understand yet.</p>
 
 <p>The bike ride after—</p>
 <p>cool air, soft silence, shared space.</p>
 <p>Your hand on my shoulder—warm, gentle, grounding.</p>
-<p class="stanza-end">A touch that stayed in my mind long after.</p>
+<p>A touch that stayed in my mind long after.</p>
 
 <p>And somewhere inside,</p>
 <p>a small wish began—</p>
-<p class="stanza-end">a simple side hug, someday.</p>
+<p>a simple side hug, someday.</p>
 
 <p>A tiny beginning.</p>
 <p>A quiet start.</p>
-<p class="stanza-end">But it was the start of us.</p>
+<p>But it was the start of us.</p>
 </div>
 <div class="next-teaser">Next: Super Townhouse Oak AECS →</div>
 </div>
 
 <!-- Event 2: Super Townhouse -->
 <div class="event-block">
-<h2>Super Townhouse Oak AECS: 26 June <a href="#"><img src="hotel.jpg" alt="Hotel"></a></h2>
+<h2>Super Townhouse Oak AECS: 26 June 2025</h2>
 <div class="poetry">
-<p>The hotel room felt warm and quiet,</p>
-<p>a space filled with nerves, excitement,</p>
-<p class="stanza-end">and a gentle pull toward you.</p>
-
-<p>Your first hug—like <b>butterflies waking all at once</b>,</p>
-<p>fluttering through my chest, making my breath feel weightless.</p>
-<p class="stanza-end">Then came our first closeness—nervous, tender, slow… two unsure hearts stepping into something new.</p>
-
-<p class="stanza-end">That night felt like a shift— a quiet spark, a silent confession, a feeling that stayed long after.</p>
+<img src="hotel.jpg" alt="Hotel" class="event-photo">
+<p>The hotel room felt warm and quiet, a space filled with nerves, excitement, and a gentle pull toward you.</p>
+<p>Your first hug—like <b>butterflies waking all at once</b>, their soft wings fluttering through my chest, making my breath feel warm and weightless.</p>
+<p>Then came our first closeness—nervous, tender, slow… two unsure hearts stepping into something new.</p>
+<p>That night felt like a shift— a quiet spark, a silent confession, a feeling that stayed long after.</p>
 </div>
 <div class="next-teaser">Next: Cricket Field →</div>
 </div>
 
 <!-- Event 3: Cricket Field -->
 <div class="event-block">
-<h2>Cricket Field</h2>
+<h2>Cricket Field: 3 July 2025</h2>
 <div class="poetry">
-<p>Having you on the cricket field felt unexpectedly tender—</p>
-<p>your presence turning the whole place warm,</p>
-<p>as if the noise faded the moment you looked my way.</p>
-<p>I played with a little extra fire,</p>
-<p class="stanza-end">hoping you’d see me, notice me, maybe even feel a spark because of me.</p>
-
-<p>And when I caught you watching—</p>
-<p class="stanza-end">that soft, adoring glance you thought I didn’t notice— it felt like the sweetest victory, the kind that touched my heart more than the game ever could.</p>
+<img src="cricket.jpg" alt="Cricket Field" class="event-photo">
+<p>Having you on the cricket field felt unexpectedly tender—your presence turning the whole place warm.</p>
+<p>I played with a little extra fire, hoping you’d see me, notice me.</p>
+<p>When I caught you watching, that soft, adoring glance—it felt like the sweetest victory.</p>
 </div>
 <div class="next-teaser">Next: 153 Biere Street →</div>
 </div>
 
 <!-- Event 4: 153 Biere Street -->
 <div class="event-block">
-<h2>153 Biere Street</h2>
+<h2>153 Biere Street: 10 July 2025</h2>
 <div class="poetry">
+<img src="biere.jpg" alt="153 Biere Street" class="event-photo">
 <p>Restobar lights, cold beer, your warmth closer than ever.</p>
 <p>Parking lot pressed us together, hands exploring, lips devouring.</p>
 <p>Cuddles heavy, breaths tangled, desire spilling over, every touch claiming more.</p>
-<p class="stanza-end">Even the small bite that drew blood couldn’t stop the fire between us.</p>
+<p>Even the small bite that drew blood couldn’t stop the fire between us.</p>
 </div>
 <div class="next-teaser">Next: Akoya →</div>
 </div>
 
 <!-- Event 5: Akoya Aug 6 -->
 <div class="event-block">
-<h2>Akoya: 6 Aug</h2>
+<h2>Akoya: 6 Aug 2025</h2>
 <div class="poetry">
-<p>Wine warming us from the first sip,</p>
-<p>desire flickering in every glance, every small touch.</p>
-<p class="stanza-end">Everything clicked—our bodies answering each other with a hungry, unstoppable honesty.</p>
-
-<p>Wild moments came fast—</p>
-<p>bold hands, daring kisses,</p>
-<p class="stanza-end">a heat that rose until it drowned every thought except you.</p>
-
-<p class="stanza-end">When the storm settled, biryani and tender coconut pudding felt calm and sweet—a soft ending to a day that burned beautifully between us.</p>
+<img src="akoya.jpg" alt="Akoya" class="event-photo">
+<p>Wine warming us, desire flickering in every glance, every small touch already pulling us closer.</p>
+<p>Everything clicked instantly—your closeness, my racing breath, our bodies answering each other.</p>
+<p>Wild moments came fast—bold hands, daring kisses, heat rising until it drowned every thought except you.</p>
+<p>Storm settled, biryani and tender coconut pudding—soft ending to a day that burned beautifully between us.</p>
 </div>
 <div class="next-teaser">Next: Happy Stays →</div>
 </div>
 
-<!-- Event 6: Happy Stays -->
+<!-- Event 6: Happy Stays Aug 19 -->
 <div class="event-block">
-<h2>Happy Stays: 19 Aug</h2>
+<h2>Happy Stays: 19 Aug 2025</h2>
 <div class="poetry">
+<img src="happystays.jpg" alt="Happy Stays" class="event-photo">
 <p>Mad, wild, unforgettable sex that left us breathless in the best way.</p>
-<p class="stanza-end">The biryani mix-up, our little hustle to get it back—messy, funny, and somehow perfectly us.</p>
+<p>The biryani mix-up, our little hustle to get it back—messy, funny, perfectly us.</p>
 </div>
 <div class="next-teaser">Next: Phoenix →</div>
 </div>
 
-<!-- Event 7: Phoenix -->
+<!-- Event 7: Phoenix Aug 24 -->
 <div class="event-block">
-<h2>Phoenix: 24 Aug</h2>
+<h2>Phoenix: 24 Aug 2025</h2>
 <div class="poetry">
-<p>Parking lot kisses—hot, stolen,</p>
-<p>spark right through the skin, until security’s flashlight found us.</p>
-<p class="stanza-end">We broke apart laughing, breathless, guilty, wanting more.</p>
-
-<p>The movie date carried our longing further,</p>
-<p class="stanza-end">fingers tracing secrets only we could feel.</p>
-
-<p>Triple Schezwan was its own kind of heat—</p>
-<p class="stanza-end">spicy, messy, addictive, just like us that day.</p>
-
-<p>Window-shopping through brand stores</p>
-<p class="stanza-end">felt strangely intimate—your hand brushing mine, desire hiding in every glance.</p>
+<img src="phoenix.jpg" alt="Phoenix" class="event-photo">
+<p>Parking lot kisses—hot, stolen, until security found us and we broke apart laughing, breathless, wanting more.</p>
+<p>The movie date carried our longing further, fingers tracing secrets only we could feel.</p>
+<p>Triple Schezwan—spicy, messy, addictive, just like us that day.</p>
+<p>Window-shopping through brand stores felt intimate—your hand brushing mine, desire hiding in every glance.</p>
 </div>
 <div class="next-teaser">Next: Zipshree →</div>
 </div>
 
-<!-- Event 8: Zipshree -->
+<!-- Event 8: Zipshree Aug 29 -->
 <div class="event-block">
-<h2>Zipshree: 29 Aug</h2>
+<h2>Zipshree: 29 Aug 2025</h2>
 <div class="poetry">
-<p>Smirnoff warming our voices,</p>
-<p>hearts running too fast for their own good.</p>
-<p>A small fight sparked—sharp words, sharper silence,</p>
-<p class="stanza-end">but underneath it all was love burning too intensely to hide.</p>
-
-<p>Your bruised face still breaks me a little—</p>
-<p class="stanza-end">I’m sorry for every moment that hurt you, every feeling that hit harder than it should have.</p>
-
-<p>In the middle of that storm,</p>
-<p class="stanza-end">the way we held each other afterward—quiet, trembling, overflowing—said more than apologies ever could.</p>
+<img src="zipshree.jpg" alt="Zipshree" class="event-photo">
+<p>Smirnoff warming our voices, hearts already running too fast.</p>
+<p>A small fight sparked—sharp words, sharper silence—but underneath, love burning too intensely to hide.</p>
+<p>Your bruised face still breaks me—I’m sorry for every moment that hurt you.</p>
+<p>In the storm, the way we held each other afterward—quiet, trembling, overflowing—said more than words.</p>
 </div>
 <div class="next-teaser">Next: Jungle Romance →</div>
 </div>
 
 <!-- Event 9: Jungle Romance -->
 <div class="event-block">
-<h2>Jungle Romance</h2>
+<h2>Jungle Romance: 5 Sep 2025</h2>
 <div class="poetry">
-<p>Kisses trembling with fear and desire,</p>
-<p>every touch a forbidden spark as if someone might see.</p>
-<p class="stanza-end">The jungle stop turning us wild in the dark, suspense thick, even mosquitos pausing like witnesses.</p>
+<img src="jungle.jpg" alt="Jungle Romance" class="event-photo">
+<p>Kisses trembling with fear and desire, every touch a forbidden spark as if someone might see.</p>
+<p>The jungle stop turned us wild, intimacy rising, suspense thick, even mosquitos pausing like witnesses.</p>
 </div>
 <div class="next-teaser">Next: Marathahalli Hotel →</div>
 </div>
 
-<!-- Event 10: Marathahalli Hotel -->
+<!-- Event 10: Marathahalli Hotel Sep 18 -->
 <div class="event-block">
-<h2>Marathahalli Hotel: 18 Sep</h2>
+<h2>Marathahalli Hotel: 18 Sep 2025</h2>
 <div class="poetry">
-<p>Mad mad intimate sessions that shook the night,</p>
-<p>scars and bruises tracing the story on your skin,</p>
-<p class="stanza-end">a physical rush so new, so deep, something I never knew my body could ever feel.</p>
+<img src="marathahalli.jpg" alt="Marathahalli Hotel" class="event-photo">
+<p>Mad mad intimate sessions that shook the night, scars and bruises tracing the story on your skin.</p>
+<p>A physical rush so new, so deep, something I never knew my body could feel.</p>
 </div>
-<div class="next-teaser">Next: Akoya Nov →</div>
+<div class="next-teaser">Next: Akoya →</div>
 </div>
 
-<!-- Event 11: Akoya Nov 6 -->
+<!-- Event 11: Akoya Nov 06 -->
 <div class="event-block">
-<h2>Akoya: 6 Nov</h2>
+<h2>Akoya: 06 Nov 2025</h2>
 <div class="poetry">
-<p>Sex after a long, aching month apart,</p>
-<p>cuddles melting into warm, naked hugs,</p>
-<p class="stanza-end">bodies remembering each other in silence, everything soft, slow, impossibly good.</p>
-
-<p>Food with you is its own comfort—biryani, pizza, cold coffee.</p>
-<p class="stanza-end">Wine and vodka nights—everything tastes better with you.</p>
-
-<p>Manifesting more intimacy, adventure, raw moments, a lifetime friend, a lifetime fire, a lifetime “us.”</p>
-<p class="stanza-end">Manifesting Goa dates for years and decades, until these breaths soften… and fade… yet still choose you.</p>
+<img src="akoya2.jpg" alt="Akoya" class="event-photo">
+<p>Sex after a long, aching month apart, cuddles melting into warm, naked hugs.</p>
+<p>Bodies remembering each other in silence, everything soft, slow, impossibly good.</p>
+<p>Food with you is its own comfort—biryani, pizza, cold coffee, wine and vodka nights—all taste better with you.</p>
+<p>Manifesting more intimacy, adventure, love, raw moments—a lifetime friend, a lifetime fire, a lifetime “us”.</p>
+<p>Manifesting Goa dates for years and decades until these breaths soften… and fade… yet still choose you.</p>
 </div>
-<div class="next-teaser">Next: Love Message →</div>
+<div class="next-teaser">The story goes on…</div>
 </div>
 
 <!-- Love Message -->
-<div class="event-block">
 <div class="love-message">
 <p>If there’s one truth my heart knows now,<br>
 it’s that you’re the warmth I return to,<br>
@@ -320,44 +273,43 @@ the softness I fall into,<br>
 and the story I want to keep writing —<br>
 again, again, and always.</p>
 </div>
-</div>
 
 </div>
 
 <script>
-// Letter-by-letter typing function
-function typeParagraphSequential(lines, delay=40, lineDelay=400, index=0){
-  if(index >= lines.length) return;
+// Sequential typing function
+function typeParagraphSequential(lines, delay=40, lineDelay=300, index=0, callback=null){
+  if(index >= lines.length){
+    if(callback) callback();
+    return;
+  }
   const p = lines[index];
   const text = p.textContent;
   p.textContent = '';
-  p.style.visibility='visible';
-  let i=0;
+  let i = 0;
   function typing(){
-    if(i<text.length){
+    if(i < text.length){
       p.textContent += text[i];
       i++;
       setTimeout(typing, delay);
     } else {
-      setTimeout(()=> typeParagraphSequential(lines, delay, lineDelay, index+1), lineDelay);
+      setTimeout(() => {
+        typeParagraphSequential(lines, delay, lineDelay, index+1, callback);
+      }, lineDelay);
     }
   }
   typing();
 }
 
-// Scroll: splash/zoom animation + typing
+// Scroll logic
 const blocks = Array.from(document.querySelectorAll('.event-block'));
-const typedBlocks = new Set();
-
 function handleScroll(){
-  blocks.forEach(block=>{
+  blocks.forEach(block => {
     const top = block.getBoundingClientRect().top;
-    const trigger = window.innerHeight*0.8;
-    if(top<trigger && !typedBlocks.has(block)){
+    if(top < window.innerHeight * 0.85 && !block.classList.contains('visible')){
       block.classList.add('visible');
-      typedBlocks.add(block);
       const lines = Array.from(block.querySelectorAll('.poetry p'));
-      if(lines.length>0) typeParagraphSequential(lines);
+      typeParagraphSequential(lines);
     }
   });
 }
