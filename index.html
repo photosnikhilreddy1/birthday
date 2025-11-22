@@ -1,88 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Happy Birthday 🎉</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday 🎉</title>
 
-  <style>
-    body {
-      background: #f7f2ff;
-      font-family: "Segoe UI", Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      color: #333;
-    }
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", Arial, sans-serif;
+            background: linear-gradient(to bottom right, #ff9ecb, #ffd6e8);
+            text-align: center;
+            color: #333;
+        }
 
-    .container {
-      max-width: 600px;
-      margin: 40px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
+        header {
+            padding: 40px 20px;
+        }
 
-    h1 {
-      font-size: 36px;
-      color: #7b2cbf;
-      margin-bottom: 10px;
-    }
+        h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+            color: #d6006f;
+        }
 
-    h2 {
-      font-size: 24px;
-      color: #5a189a;
-      margin-top: 30px;
-    }
+        p {
+            font-size: 18px;
+            margin: 0 auto;
+            max-width: 600px;
+            line-height: 1.6;
+        }
 
-    p {
-      font-size: 18px;
-      line-height: 1.6;
-      margin: 15px 0;
-    }
+        .container {
+            padding: 20px;
+        }
 
-    .photo {
-      width: 100%;
-      max-height: 330px;
-      object-fit: cover;
-      border-radius: 12px;
-      margin: 20px 0;
-    }
+        .section-title {
+            font-size: 28px;
+            margin-top: 40px;
+            color: #b0005c;
+        }
 
-    .footer {
-      margin-top: 30px;
-      font-size: 16px;
-      color: #6a6a6a;
-    }
-  </style>
+        .map-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 14px 24px;
+            background: #ff4081;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .map-btn:hover {
+            background: #e60063;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding: 15px;
+            font-size: 14px;
+            color: #333;
+            opacity: 0.7;
+        }
+    </style>
 </head>
 
 <body>
-  <div class="container">
 
-    <h1>🎉 Happy Birthday! 🎂</h1>
-    <p>Here's a little memory blog I made just for you.</p>
+    <header>
+        <h1>🎉 Happy Birthday 🎉</h1>
+        <p>
+            A small memory page created with love 💗<br>
+            Wishing you joy, laughter, and a beautiful year ahead.
+        </p>
+    </header>
 
-    <img class="photo" src="your-photo.jpg" alt="Memory Photo" />
+    <div class="container">
 
-    <h2>💜 A Memory to Cherish</h2>
-    <p>
-      On this special day, I wanted to share a moment that means a lot to me.
-      Thank you for being someone who brings so much joy, laughter, and warmth.
-    </p>
+        <h2 class="section-title">📍 Location</h2>
+        <p>Click below to open the place in Google Maps:</p>
 
-    <p>
-      Whether it's our inside jokes, late-night talks, or the small things we share,
-      each moment becomes a memory I treasure.
-    </p>
+        <a class="map-btn" href="https://maps.app.goo.gl/y1ua36iZJ3gJsMLZ8" target="_blank">
+            📌 Open Location on Maps
+        </a>
 
-    <h2>✨ A Birthday Wish</h2>
-    <p>
-      May this year bring you all the happiness you deserve.  
-      More smiles, more adventures, and more beautiful memories.
-    </p>
+        <h2 class="section-title">💖 Message</h2>
+        <p>
+            May your day be filled with unforgettable moments, happiness, and the warmth of everyone you love.
+            Here's to many more amazing memories together! 🎂✨
+        </p>
 
-    <p class="footer">Made with ❤️ just for you</p>
-  </div>
+        <h2 class="section-title">📸 Memories</h2>
+        <p>You can add images here later.</p>
+
+    </div>
+
+    <div class="footer">
+        Created with ❤️ by Nikhil
+    </div>
+
 </body>
 </html>
