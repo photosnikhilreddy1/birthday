@@ -9,7 +9,7 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-x:hidden; }
 
-/* Floating heart */
+/* Floating hearts */
 .emoji {
   position: fixed;
   font-size: 30px;
@@ -39,16 +39,32 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
 
 /* Event Header */
 .event-block h2 {
-  font-family: 'Playfair Display', serif; font-size:32px; color:#ff577f;
-  display:flex; align-items:center; gap:15px; margin-bottom:25px;
+  font-family: 'Playfair Display', serif; display:flex; align-items:center; gap:15px; margin-bottom:25px;
 }
-.event-block h2 .event-title { font-size:32px; text-decoration:none; color:#ff577f; }
+.event-block h2 .event-title {
+  font-size:32px; text-decoration:underline; color:#ff577f;
+}
 .event-block h2 .event-date { font-size:16px; color:#fff; margin-left:15px; }
 
 /* Poetry Text */
 .poetry { font-size:18px; line-height:1.6; color:#eee; }
 .stanza { margin-bottom:30px; }
 .stanza p { margin-bottom:5px; visibility:hidden; }
+
+/* Scroll indicator */
+.scroll-indicator {
+  position:absolute;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:24px;
+  opacity:0.6;
+  animation: bounce 1.5s infinite;
+}
+@keyframes bounce {
+  0%,100% { transform: translate(-50%,0); }
+  50% { transform: translate(-50%,10px); }
+}
 
 /* Love Message */
 .love-message {
@@ -67,14 +83,14 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
 
 <!-- Floating hearts -->
 <script>
-const emojiCount = 1; 
+const emojiCount = 15; // only ❤️
 const symbols = ['❤️'];
 for(let i=0;i<emojiCount;i++){
   let emoji = document.createElement('div');
   emoji.className='emoji';
   emoji.style.left = Math.random()*100 + 'vw';
-  emoji.style.animationDuration = (20 + Math.random()*10)+'s';
-  emoji.innerHTML = symbols[Math.floor(Math.random()*symbols.length)];
+  emoji.style.animationDuration = (15 + Math.random()*10)+'s';
+  emoji.innerHTML = symbols[0];
   document.body.appendChild(emoji);
 }
 </script>
@@ -109,6 +125,7 @@ for(let i=0;i<emojiCount;i++){
 <p>But it was the start of us.</p>
 </div>
 </div>
+<div class="scroll-indicator">⬇️</div>
 </div>
 
 <!-- Event 2 -->
@@ -144,6 +161,7 @@ for(let i=0;i<emojiCount;i++){
 <p>a feeling that stayed long after.</p>
 </div>
 </div>
+<div class="scroll-indicator">⬇️</div>
 </div>
 
 <!-- Event 3 -->
@@ -167,11 +185,12 @@ for(let i=0;i<emojiCount;i++){
 <p>the kind that touched my heart more than the game ever could.</p>
 </div>
 </div>
+<div class="scroll-indicator">⬇️</div>
 </div>
 
 <!-- Event 4 -->
 <div class="event-block">
-<h2><a class="event-title" href="https://maps.app.goo.gl/EqKU69rgnK4LzQRL9 " target="_blank">Bier & Burning Desire</a> <span class="event-date">15 July</span></h2>
+<h2><a class="event-title" href="#" target="_blank">Bier & Burning Desire</a> <span class="event-date">15 July</span></h2>
 <div class="poetry">
 <div class="stanza">
 <p>Restobar lights, cold beer, your warmth closer than ever.</p>
@@ -180,11 +199,12 @@ for(let i=0;i<emojiCount;i++){
 <p>Even the small bite that drew blood couldn’t stop the fire between us.</p>
 </div>
 </div>
+<div class="scroll-indicator">⬇️</div>
 </div>
 
 <!-- Event 5 -->
 <div class="event-block">
-<h2><a class="event-title" href="https://maps.app.goo.gl/DaYnVorE4bVv3zaT6" target="_blank">Secret Lust Whispers</a> <span class="event-date">6 Aug</span></h2>
+<h2><a class="event-title" href="#" target="_blank">Secret Lust Whispers</a> <span class="event-date">6 Aug</span></h2>
 <div class="poetry">
 <div class="stanza">
 <p>That day felt charged from the moment we met—</p>
@@ -199,11 +219,8 @@ for(let i=0;i<emojiCount;i++){
 </div>
 <div class="stanza">
 <p>The wild moments came fast—</p>
-<p>bold hands, daring kisses,</p>
-<p>a heat that rose and rose until it drowned every thought except you.</p>
-<p>The wind only made it crazier,</p>
-<p>turning our closeness into thrill, every move sharper, deeper,</p>
-<p>a rush that blew my mind completely.</p>
+<p>bold hands, daring kisses, a heat that rose and rose until it drowned every thought except you.</p>
+<p>The wind only made it crazier, turning our closeness into thrill, every move sharper, deeper, a rush that blew my mind completely.</p>
 </div>
 <div class="stanza">
 <p>And when the storm settled,</p>
@@ -212,69 +229,61 @@ for(let i=0;i<emojiCount;i++){
 <p>a soft ending to a day that burned beautifully between us.</p>
 </div>
 </div>
+<div class="scroll-indicator">⬇️</div>
 </div>
 
 <!-- Event 6 -->
 <div class="event-block">
-<h2><a class="event-title" href="https://maps.app.goo.gl/9ryBaTZUuYjuTnMy7" target="_blank">Mad Wild Unforgettable</a> <span class="event-date">—</span></h2>
+<h2><a class="event-title" href="#" target="_blank">Mad & Unforgettable</a> <span class="event-date">—</span></h2>
 <div class="poetry">
 <div class="stanza">
 <p>Mad, wild, unforgettable sex that left us breathless in the best way.</p>
 <p>And the biryani mix-up, our little hustle to get it back—messy, funny, and somehow perfectly us.</p>
 </div>
 </div>
+<div class="scroll-indicator">⬇️</div>
 </div>
 
 <!-- Event 7 -->
 <div class="event-block">
-<h2><a class="event-title" href="https://maps.app.goo.gl/EWuc63EwjVwwGU8A9" target="_blank">Parking Lot Kisses</a> <span class="event-date">—</span></h2>
+<h2><a class="event-title" href="#" target="_blank">Parking Lot Kisses</a> <span class="event-date">—</span></h2>
 <div class="poetry">
 <div class="stanza">
 <p>Parking lot kisses—hot, stolen,</p>
 <p>the kind that spark right through the skin,</p>
-<p>until security’s flashlight found us</p>
-<p>and we broke apart laughing, breathless, guilty, wanting more.</p>
+<p>until security’s flashlight found us and we broke apart laughing, breathless, guilty, wanting more.</p>
 </div>
 <div class="stanza">
 <p>The movie date carried our longing further,</p>
 <p>fingers tracing secrets only we could feel.</p>
-<p>Triple Schezwan was its own kind of heat—</p>
-<p>spicy, messy, addictive,</p>
-<p>just like us that day.</p>
+<p>Triple Schezwan was its own kind of heat—spicy, messy, addictive, just like us that day.</p>
+</div>
+<div class="stanza">
 <p>And window-shopping through brand stores felt strangely intimate—</p>
-<p>your hand brushing mine,</p>
-<p>your eyes catching me,</p>
-<p>desire hiding in every “casual” glance.</p>
+<p>your hand brushing mine, your eyes catching me, desire hiding in every “casual” glance.</p>
 <p>A lusty little adventure, sweet, reckless, and perfectly ours.</p>
 </div>
 </div>
+<div class="scroll-indicator">⬇️</div>
 </div>
 
 <!-- Event 8 -->
 <div class="event-block">
-<h2><a class="event-title" href="https://maps.app.goo.gl/evm8QhALBNj9y2J1A" target="_blank">Smirnoff Nights</a> <span class="event-date">—</span></h2>
+<h2><a class="event-title" href="#" target="_blank">Smirnoff Nights</a> <span class="event-date">—</span></h2>
 <div class="poetry">
 <div class="stanza">
-<p>Smirnoff warming our voices,</p>
-<p>our hearts already running too fast for their own good.</p>
-<p>A small fight sparked—</p>
-<p>sharp words, sharper silence—</p>
-<p>but underneath it all was love burning too intensely to hide.</p>
-<p>Your bruised face still breaks me a little—</p>
-<p>I’m sorry for every moment that hurt you,</p>
-<p>every emotion that turned too heavy,</p>
-<p>every feeling that hit harder than it should have.</p>
-<p>But in the middle of that storm,</p>
-<p>the way we held each other afterward—</p>
-<p>quiet, trembling, overflowing—</p>
-<p>said more than apologies ever could.</p>
+<p>Smirnoff warming our voices, our hearts already running too fast for their own good.</p>
+<p>A small fight sparked—sharp words, sharper silence—but underneath it all was love burning too intensely to hide.</p>
+<p>Your bruised face still breaks me a little—I’m sorry for every moment that hurt you, every emotion that turned too heavy, every feeling that hit harder than it should have.</p>
+<p>But in the middle of that storm, the way we held each other afterward—quiet, trembling, overflowing—said more than apologies ever could.</p>
 </div>
 </div>
+<div class="scroll-indicator">⬇️</div>
 </div>
 
 <!-- Event 9 -->
 <div class="event-block">
-<h2><a class="event-title" href="#" target="_blank">Jungle Whispers</a> <span class="event-date">—</span></h2>
+<h2><a class="event-title" href="#" target="_blank">Jungle Secrets</a> <span class="event-date">—</span></h2>
 <div class="poetry">
 <div class="stanza">
 <p>Our kisses trembling with fear and desire,</p>
@@ -283,11 +292,12 @@ for(let i=0;i<emojiCount;i++){
 <p>intimacy rising, suspense thick in the air, even mosquitos pausing like witnesses.</p>
 </div>
 </div>
+<div class="scroll-indicator">⬇️</div>
 </div>
 
 <!-- Event 10 -->
 <div class="event-block">
-<h2><a class="event-title" href="https://maps.app.goo.gl/tzsTsvXntsY3Um4D6" target="_blank">Mad Intimate Nights</a> <span class="event-date">—</span></h2>
+<h2><a class="event-title" href="#" target="_blank">Intimate Nights</a> <span class="event-date">—</span></h2>
 <div class="poetry">
 <div class="stanza">
 <p>Mad mad intimate sessions that shook the night,</p>
@@ -296,11 +306,12 @@ for(let i=0;i<emojiCount;i++){
 <p>something I never knew my body could ever feel.</p>
 </div>
 </div>
+<div class="scroll-indicator">⬇️</div>
 </div>
 
 <!-- Event 11 -->
 <div class="event-block">
-<h2><a class="event-title" href="#" target="_blank">Longing & Reunion</a> <span class="event-date">—</span></h2>
+<h2><a class="event-title" href="#" target="_blank">Longing Reunited</a> <span class="event-date">—</span></h2>
 <div class="poetry">
 <div class="stanza">
 <p>Sex after a long, aching month apart,</p>
@@ -310,18 +321,17 @@ for(let i=0;i<emojiCount;i++){
 </div>
 <div class="stanza">
 <p>Food with you is its own comfort — biryani, pizza, cold coffee.</p>
-<p>wine and vodka nights — everything tastes better with you.</p>
-<p>Manifesting more intimacy, more adventure, more love, more raw moments,</p>
-<p>a lifetime friend, a lifetime fire, a lifetime “us.”</p>
-<p>Manifesting Goa dates for years and decades,</p>
-<p>until these breaths soften… and fade… yet still choose you.</p>
+<p>Wine and vodka nights — everything tastes better with you.</p>
+<p>Manifesting more intimacy, more adventure, more love, more raw moments, a lifetime friend, a lifetime fire, a lifetime “us.”</p>
+<p>Manifesting Goa dates for years and decades, until these breaths soften… and fade… yet still choose you.</p>
 </div>
 </div>
+<div class="scroll-indicator">⬇️</div>
 </div>
 
 <!-- Event 12 / Love Message -->
 <div class="event-block">
-<h2><a class="event-title" href="https://maps.app.goo.gl/DaYnVorE4bVv3zaT6" target="_blank">Forever Us</a> <span class="event-date">—</span></h2>
+<h2><a class="event-title" href="#" target="_blank">Forever Us</a> <span class="event-date">—</span></h2>
 <div class="poetry">
 <div class="stanza">
 <p>If there’s one truth my heart knows now,</p>
@@ -337,7 +347,7 @@ for(let i=0;i<emojiCount;i++){
 </div>
 
 <script>
-// Typing animation for each paragraph in stanzas
+// Typing animation for paragraphs
 function typeParagraphSequential(lines, delay=40, lineDelay=400, index=0, callback=null){
   if(index >= lines.length){ if(callback) callback(); return; }
   const p = lines[index]; const text = p.textContent;
