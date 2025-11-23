@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Our Love Story</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-x:hidden; }
@@ -36,8 +36,8 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
 }
 
 /* Alternate page backgrounds */
-.event-block:nth-child(odd) { background: #1a1a1a; }
-.event-block:nth-child(even) { background: #222; }
+.event-block:nth-child(odd):not(.first-last) { background: #1a1a1a; }
+.event-block:nth-child(even):not(.first-last) { background: #222; }
 
 .event-block.visible { opacity:1; transform: translateY(0) scale(1); }
 
@@ -70,20 +70,8 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
   50% { transform: translate(-50%,10px); }
 }
 
-/* Love Message */
-.love-message {
-  background:#e63946; color:#fff; border-radius:15px; padding:50px 30px;
-  text-align:center; font-family: 'Playfair Display', serif; font-size:22px;
-  line-height:1.8; box-shadow:0 10px 25px rgba(255,0,70,0.4);
-  position:relative; overflow:hidden;
-}
-.love-message::before {
-  content:'❤️'; position:absolute; font-size:40px; top:-20px;
-  left:50%; transform:translateX(-50%); opacity:0.2;
-}
-
-/* Last page special style */
-.event-block:last-child {
+/* First & Last Page Style */
+.event-block.first-last {
   background: #ff577f;
   color: #fff;
   display: flex;
@@ -93,10 +81,28 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
   text-align: center;
   min-height: 90vh;
 }
-.event-block:last-child .poetry {
+.event-block.first-last .poetry {
   font-size: 22px;
   line-height: 1.8;
   max-width: 700px;
+}
+.event-block.first-last h2 .event-title {
+  color: #fff;
+  text-decoration:none;
+  font-family: 'Dancing Script', cursive;
+  font-size: 48px;
+  margin:20px 0;
+}
+
+/* Beer glasses animation */
+.beer-glass {
+  font-size:50px;
+  animation: toast 2s ease-in-out infinite alternate;
+}
+@keyframes toast {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(-10deg); }
+  100% { transform: translateY(0) rotate(10deg); }
 }
 </style>
 </head>
@@ -117,6 +123,26 @@ for(let i=0;i<emojiCount;i++){
 </script>
 
 <div class="container">
+
+<!-- First Page -->
+<div class="event-block first-last">
+<h2>
+  <span class="beer-glass">🍻</span>
+  <span class="event-title">Happy Birthday Sushma!</span>
+  <span class="beer-glass">🍻</span>
+</h2>
+<div class="poetry">
+<div class="stanza">
+<p>You are cherished, truly special,</p>
+<p>A spark in our everyday moments.</p>
+<p>Every memory, every laugh, every stolen glance</p>
+<p>Lives here, captured below—</p>
+<p>Take your time, reread, and relive each beat.</p>
+<p>May every visit remind you of the joy you bring.</p>
+</div>
+</div>
+<div class="scroll-indicator">⬇️</div>
+</div>
 
 <!-- Event 1 -->
 <div class="event-block">
@@ -357,9 +383,13 @@ for(let i=0;i<emojiCount;i++){
 <div class="scroll-indicator">⬇️</div>
 </div>
 
-<!-- Event 12 / Last Page -->
-<div class="event-block">
-<h2><a class="event-title" href="#" target="_blank">Forever Us</a> <span class="event-date">—</span></h2>
+<!-- Last Page -->
+<div class="event-block first-last">
+<h2>
+  <span class="beer-glass">🍻</span>
+  <span class="event-title">Forever Us</span>
+  <span class="beer-glass">🍻</span>
+</h2>
 <div class="poetry">
 <div class="stanza">
 <p>If there’s one truth my heart knows now,</p>
@@ -375,8 +405,8 @@ for(let i=0;i<emojiCount;i++){
 </div>
 
 <script>
-// Typing animation for paragraphs (independent per block)
-function typeParagraphSequential(lines, delay=40, lineDelay=400){
+// Typing animation for paragraphs (slower: 0.5x)
+function typeParagraphSequential(lines, delay=80, lineDelay=800){ 
   lines.forEach((p, index) => {
     p.style.visibility = 'visible';
     const text = p.textContent;
@@ -389,7 +419,7 @@ function typeParagraphSequential(lines, delay=40, lineDelay=400){
         setTimeout(typing, delay);
       }
     }
-    setTimeout(typing, index * lineDelay); // stagger lines
+    setTimeout(typing, index * lineDelay); 
     typing();
   });
 }
@@ -403,7 +433,7 @@ function handleScroll(){
       if(top < window.innerHeight*0.85){
         block.classList.add('visible');
         const lines = Array.from(block.querySelectorAll('.stanza p'));
-        typeParagraphSequential(lines, 40, 400);
+        typeParagraphSequential(lines, 80, 800); 
       }
     }
   });
