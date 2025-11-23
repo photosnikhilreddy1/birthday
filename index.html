@@ -32,14 +32,18 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
   border-radius: 15px; padding: 50px 30px;
   opacity:0; transform: translateY(50px) scale(0.95);
   transition: all 0.8s ease; min-height: 90vh;
-  position: relative; background: #1a1a1a;
+  position: relative;
 }
+
+/* Alternate page backgrounds */
+.event-block:nth-child(odd) { background: #1a1a1a; }
 .event-block:nth-child(even) { background: #222; }
+
 .event-block.visible { opacity:1; transform: translateY(0) scale(1); }
 
 /* Event Header */
 .event-block h2 {
-  font-family: 'Playfair Display', serif; display:flex; align-items:center; gap:15px; margin-bottom:25px;
+  font-family: 'Playfair Display', serif; display:flex; align-items:center; gap:15px; margin-bottom:25px; flex-wrap: wrap; justify-content: flex-start;
 }
 .event-block h2 .event-title {
   font-size:32px; text-decoration:underline; color:#ff577f;
@@ -48,7 +52,7 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
 
 /* Poetry Text */
 .poetry { font-size:18px; line-height:1.6; color:#eee; }
-.stanza { margin-bottom:30px; }
+.stanza { margin-bottom:40px; }
 .stanza p { margin-bottom:5px; visibility:hidden; }
 
 /* Scroll indicator */
@@ -76,6 +80,23 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
 .love-message::before {
   content:'❤️'; position:absolute; font-size:40px; top:-20px;
   left:50%; transform:translateX(-50%); opacity:0.2;
+}
+
+/* Last page special style */
+.event-block:last-child {
+  background: #ff577f;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 90vh;
+}
+.event-block:last-child .poetry {
+  font-size: 22px;
+  line-height: 1.8;
+  max-width: 700px;
 }
 </style>
 </head>
@@ -169,20 +190,20 @@ for(let i=0;i<emojiCount;i++){
 <h2><a class="event-title" href="https://maps.app.goo.gl/8QcMrJNAsCu5vheMA" target="_blank">Bowled Over</a> <span class="event-date">—</span></h2>
 <div class="poetry">
 <div class="stanza">
-<p>Having you on the cricket field felt unexpectedly tender—</p>
-<p>your presence turning the whole place warm,</p>
-<p>as if the noise faded the moment you looked my way.</p>
+  <p>On the box cricket field, I tried my best,</p>
+  <p>Every swing, every run, a quiet test,</p>
+  <p>Hoping your glance would notice my quest.</p>
 </div>
 <div class="stanza">
-<p>I played with a little extra fire,</p>
-<p>hoping you’d see me, notice me,</p>
-<p>maybe even feel a spark because of me.</p>
+  <p>I played with fire, a little bold,</p>
+  <p>Hoping your smile would quietly unfold,</p>
+  <p>Your soft look felt worth more than gold.</p>
 </div>
 <div class="stanza">
-<p>And when I caught you watching—</p>
-<p>that soft, adoring glance you thought I didn’t notice—</p>
-<p>it felt like the sweetest victory,</p>
-<p>the kind that touched my heart more than the game ever could.</p>
+  <p>And when our eyes finally met that day,</p>
+  <p>It felt like winning in my own way,</p>
+  <p>Your gaze, your warmth, made the cheers all fade,</p>
+  <p>A memory I’ll treasure, forever stayed.</p>
 </div>
 </div>
 <div class="scroll-indicator">⬇️</div>
@@ -190,13 +211,19 @@ for(let i=0;i<emojiCount;i++){
 
 <!-- Event 4 -->
 <div class="event-block">
-<h2><a class="event-title" href="#" target="_blank">Bier & Burning Desire</a> <span class="event-date">15 July</span></h2>
+<h2><a class="event-title" href="https://maps.app.goo.gl/EqKU69rgnK4LzQRL9" target="_blank">153 Bier street & Burning Desire</a> <span class="event-date">15 July</span></h2>
 <div class="poetry">
 <div class="stanza">
-<p>Restobar lights, cold beer, your warmth closer than ever.</p>
-<p>Parking lot pressed us together, hands exploring, lips devouring.</p>
-<p>Cuddles heavy, breaths tangled, desire spilling over, every touch claiming more.</p>
-<p>Even the small bite that drew blood couldn’t stop the fire between us.</p>
+  <p>Restobar lights danced on your face,</p>
+  <p>Cold beer in hand, but I only felt your warmth.</p>
+  <p>In the car, we melted into each other,</p>
+  <p>Hands tracing paths, lips claiming small victories.</p>
+</div>
+<div class="stanza">
+  <p>Breaths tangled, hearts beating too fast,</p>
+  <p>Every touch a quiet storm,</p>
+  <p>Desire spilling, unspoken, urgent,</p>
+  <p>A small bite, a spark, and the fire only grew.</p>
 </div>
 </div>
 <div class="scroll-indicator">⬇️</div>
@@ -204,7 +231,7 @@ for(let i=0;i<emojiCount;i++){
 
 <!-- Event 5 -->
 <div class="event-block">
-<h2><a class="event-title" href="#" target="_blank">Secret Lust Whispers</a> <span class="event-date">6 Aug</span></h2>
+<h2><a class="event-title" href="https://maps.app.goo.gl/DaYnVorE4bVv3zaT6" target="_blank">Secret Lust Whispers</a> <span class="event-date">6 Aug</span></h2>
 <div class="poetry">
 <div class="stanza">
 <p>That day felt charged from the moment we met—</p>
@@ -220,7 +247,6 @@ for(let i=0;i<emojiCount;i++){
 <div class="stanza">
 <p>The wild moments came fast—</p>
 <p>bold hands, daring kisses, a heat that rose and rose until it drowned every thought except you.</p>
-<p>The wind only made it crazier, turning our closeness into thrill, every move sharper, deeper, a rush that blew my mind completely.</p>
 </div>
 <div class="stanza">
 <p>And when the storm settled,</p>
@@ -234,11 +260,13 @@ for(let i=0;i<emojiCount;i++){
 
 <!-- Event 6 -->
 <div class="event-block">
-<h2><a class="event-title" href="#" target="_blank">Mad & Unforgettable</a> <span class="event-date">—</span></h2>
+<h2><a class="event-title" href="https://maps.app.goo.gl/9ryBaTZUuYjuTnMy7" target="_blank">Mad & Unforgettable</a> <span class="event-date">19 Aug</span></h2>
 <div class="poetry">
 <div class="stanza">
-<p>Mad, wild, unforgettable sex that left us breathless in the best way.</p>
-<p>And the biryani mix-up, our little hustle to get it back—messy, funny, and somehow perfectly us.</p>
+  <p>Mad, wild, unforgettable—our bodies left breathless,</p>
+  <p>Every touch, every gasp, a spark we couldn’t tame.</p>
+  <p>The biryani mix-up, our messy little chase,</p>
+  <p>Funny, chaotic, and somehow perfectly ours.</p>
 </div>
 </div>
 <div class="scroll-indicator">⬇️</div>
@@ -246,7 +274,7 @@ for(let i=0;i<emojiCount;i++){
 
 <!-- Event 7 -->
 <div class="event-block">
-<h2><a class="event-title" href="#" target="_blank">Parking Lot Kisses</a> <span class="event-date">—</span></h2>
+<h2><a class="event-title" href="https://maps.app.goo.gl/EWuc63EwjVwwGU8A9" target="_blank">Parking Lot Kisses</a> <span class="event-date">24 Aug</span></h2>
 <div class="poetry">
 <div class="stanza">
 <p>Parking lot kisses—hot, stolen,</p>
@@ -269,7 +297,7 @@ for(let i=0;i<emojiCount;i++){
 
 <!-- Event 8 -->
 <div class="event-block">
-<h2><a class="event-title" href="#" target="_blank">Smirnoff Nights</a> <span class="event-date">—</span></h2>
+<h2><a class="event-title" href="https://maps.app.goo.gl/evm8QhALBNj9y2J1A" target="_blank">Smirnoff Evenings</a> <span class="event-date">29 Aug</span></h2>
 <div class="poetry">
 <div class="stanza">
 <p>Smirnoff warming our voices, our hearts already running too fast for their own good.</p>
@@ -283,7 +311,7 @@ for(let i=0;i<emojiCount;i++){
 
 <!-- Event 9 -->
 <div class="event-block">
-<h2><a class="event-title" href="#" target="_blank">Jungle Secrets</a> <span class="event-date">—</span></h2>
+<h2><a class="event-title" href="#" target="_blank">Jungle Secrets</a> <span class="event-date"></span></h2>
 <div class="poetry">
 <div class="stanza">
 <p>Our kisses trembling with fear and desire,</p>
@@ -297,10 +325,10 @@ for(let i=0;i<emojiCount;i++){
 
 <!-- Event 10 -->
 <div class="event-block">
-<h2><a class="event-title" href="#" target="_blank">Intimate Nights</a> <span class="event-date">—</span></h2>
+<h2><a class="event-title" href="https://maps.app.goo.gl/tzsTsvXntsY3Um4D6" target="_blank">Intimate evenings</a> <span class="event-date">18 Sep</span></h2>
 <div class="poetry">
 <div class="stanza">
-<p>Mad mad intimate sessions that shook the night,</p>
+<p>Mad mad intimate sessions that shook the day,</p>
 <p>scars and bruises tracing the story on your skin,</p>
 <p>a physical rush so new, so deep,</p>
 <p>something I never knew my body could ever feel.</p>
@@ -311,7 +339,7 @@ for(let i=0;i<emojiCount;i++){
 
 <!-- Event 11 -->
 <div class="event-block">
-<h2><a class="event-title" href="#" target="_blank">Longing Reunited</a> <span class="event-date">—</span></h2>
+<h2><a class="event-title" href="https://maps.app.goo.gl/DaYnVorE4bVv3zaT6" target="_blank">Longing Reunited</a> <span class="event-date">6 Nov</span></h2>
 <div class="poetry">
 <div class="stanza">
 <p>Sex after a long, aching month apart,</p>
@@ -329,7 +357,7 @@ for(let i=0;i<emojiCount;i++){
 <div class="scroll-indicator">⬇️</div>
 </div>
 
-<!-- Event 12 / Love Message -->
+<!-- Event 12 / Last Page -->
 <div class="event-block">
 <h2><a class="event-title" href="#" target="_blank">Forever Us</a> <span class="event-date">—</span></h2>
 <div class="poetry">
