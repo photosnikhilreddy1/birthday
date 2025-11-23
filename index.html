@@ -28,7 +28,7 @@ body { font-family: 'Roboto', sans-serif; background:#111; color:#fff; overflow-
 
 /* Event Block */
 .event-block {
-  display:flex; flex-direction:column; justify-content:center;
+  display:flex; flex-direction:column;
   border-radius: 15px; padding: 50px 30px;
   opacity:0; transform: translateY(50px) scale(0.95);
   transition: all 0.8s ease; min-height: 90vh;
@@ -190,20 +190,20 @@ for(let i=0;i<emojiCount;i++){
 <h2><a class="event-title" href="https://maps.app.goo.gl/8QcMrJNAsCu5vheMA" target="_blank">Bowled Over</a> <span class="event-date">—</span></h2>
 <div class="poetry">
 <div class="stanza">
-  <p>On the box cricket field, I tried my best,</p>
-  <p>Every swing, every run, a quiet test,</p>
-  <p>Hoping your glance would notice my quest.</p>
+<p>On the box cricket field, I tried my best,</p>
+<p>Every swing, every run, a quiet test,</p>
+<p>Hoping your glance would notice my quest.</p>
 </div>
 <div class="stanza">
-  <p>I played with fire, a little bold,</p>
-  <p>Hoping your smile would quietly unfold,</p>
-  <p>Your soft look felt worth more than gold.</p>
+<p>I played with fire, a little bold,</p>
+<p>Hoping your smile would quietly unfold,</p>
+<p>Your soft look felt worth more than gold.</p>
 </div>
 <div class="stanza">
-  <p>And when our eyes finally met that day,</p>
-  <p>It felt like winning in my own way,</p>
-  <p>Your gaze, your warmth, made the cheers all fade,</p>
-  <p>A memory I’ll treasure, forever stayed.</p>
+<p>And when our eyes finally met that day,</p>
+<p>It felt like winning in my own way,</p>
+<p>Your gaze, your warmth, made the cheers all fade,</p>
+<p>A memory I’ll treasure, forever stayed.</p>
 </div>
 </div>
 <div class="scroll-indicator">⬇️</div>
@@ -214,16 +214,16 @@ for(let i=0;i<emojiCount;i++){
 <h2><a class="event-title" href="https://maps.app.goo.gl/EqKU69rgnK4LzQRL9" target="_blank">153 Bier street & Burning Desire</a> <span class="event-date">15 July</span></h2>
 <div class="poetry">
 <div class="stanza">
-  <p>Restobar lights danced on your face,</p>
-  <p>Cold beer in hand, but I only felt your warmth.</p>
-  <p>In the car, we melted into each other,</p>
-  <p>Hands tracing paths, lips claiming small victories.</p>
+<p>Restobar lights danced on your face,</p>
+<p>Cold beer in hand, but I only felt your warmth.</p>
+<p>In the car, we melted into each other,</p>
+<p>Hands tracing paths, lips claiming small victories.</p>
 </div>
 <div class="stanza">
-  <p>Breaths tangled, hearts beating too fast,</p>
-  <p>Every touch a quiet storm,</p>
-  <p>Desire spilling, unspoken, urgent,</p>
-  <p>A small bite, a spark, and the fire only grew.</p>
+<p>Breaths tangled, hearts beating too fast,</p>
+<p>Every touch a quiet storm,</p>
+<p>Desire spilling, unspoken, urgent,</p>
+<p>A small bite, a spark, and the fire only grew.</p>
 </div>
 </div>
 <div class="scroll-indicator">⬇️</div>
@@ -263,10 +263,10 @@ for(let i=0;i<emojiCount;i++){
 <h2><a class="event-title" href="https://maps.app.goo.gl/9ryBaTZUuYjuTnMy7" target="_blank">Mad & Unforgettable</a> <span class="event-date">19 Aug</span></h2>
 <div class="poetry">
 <div class="stanza">
-  <p>Mad, wild, unforgettable—our bodies left breathless,</p>
-  <p>Every touch, every gasp, a spark we couldn’t tame.</p>
-  <p>The biryani mix-up, our messy little chase,</p>
-  <p>Funny, chaotic, and somehow perfectly ours.</p>
+<p>Mad, wild, unforgettable—our bodies left breathless,</p>
+<p>Every touch, every gasp, a spark we couldn’t tame.</p>
+<p>The biryani mix-up, our messy little chase,</p>
+<p>Funny, chaotic, and somehow perfectly ours.</p>
 </div>
 </div>
 <div class="scroll-indicator">⬇️</div>
@@ -325,7 +325,7 @@ for(let i=0;i<emojiCount;i++){
 
 <!-- Event 10 -->
 <div class="event-block">
-<h2><a class="event-title" href="https://maps.app.goo.gl/tzsTsvXntsY3Um4D6" target="_blank">Intimate evenings</a> <span class="event-date">18 Sep</span></h2>
+<h2><a class="event-title" href="https://maps.app.goo.gl/tzsTsvXntsY3Um4D6" target="_blank">Intimate Evenings</a> <span class="event-date">18 Sep</span></h2>
 <div class="poetry">
 <div class="stanza">
 <p>Mad mad intimate sessions that shook the day,</p>
@@ -375,31 +375,40 @@ for(let i=0;i<emojiCount;i++){
 </div>
 
 <script>
-// Typing animation for paragraphs
-function typeParagraphSequential(lines, delay=40, lineDelay=400, index=0, callback=null){
-  if(index >= lines.length){ if(callback) callback(); return; }
-  const p = lines[index]; const text = p.textContent;
-  p.textContent=''; p.style.visibility='visible';
-  let i=0;
-  function typing(){ 
-    if(i<text.length){ p.textContent += text[i]; i++; setTimeout(typing, delay);}
-    else setTimeout(()=>{ typeParagraphSequential(lines, delay, lineDelay, index+1, callback); }, lineDelay);
-  }
-  typing();
+// Typing animation for paragraphs (independent per block)
+function typeParagraphSequential(lines, delay=40, lineDelay=400){
+  lines.forEach((p, index) => {
+    p.style.visibility = 'visible';
+    const text = p.textContent;
+    p.textContent = '';
+    let i = 0;
+    function typing(){ 
+      if(i < text.length){ 
+        p.textContent += text[i]; 
+        i++; 
+        setTimeout(typing, delay);
+      }
+    }
+    setTimeout(typing, index * lineDelay); // stagger lines
+    typing();
+  });
 }
 
 const blocks = Array.from(document.querySelectorAll('.event-block'));
-let currentBlock=0;
+
 function handleScroll(){
-  if(currentBlock>=blocks.length) return;
-  const block=blocks[currentBlock];
-  const top=block.getBoundingClientRect().top;
-  if(top<window.innerHeight*0.85 && !block.classList.contains('visible')){
-    block.classList.add('visible');
-    const lines = Array.from(block.querySelectorAll('.stanza p'));
-    typeParagraphSequential(lines, 40, 400, 0, ()=>{ currentBlock++; });
-  }
+  blocks.forEach(block => {
+    if(!block.classList.contains('visible')){
+      const top = block.getBoundingClientRect().top;
+      if(top < window.innerHeight*0.85){
+        block.classList.add('visible');
+        const lines = Array.from(block.querySelectorAll('.stanza p'));
+        typeParagraphSequential(lines, 40, 400);
+      }
+    }
+  });
 }
+
 window.addEventListener('scroll', handleScroll);
 window.addEventListener('load', handleScroll);
 </script>
